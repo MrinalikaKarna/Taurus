@@ -7,7 +7,7 @@
 <html>
 <head>
 
-<title>Three Column Layout</title>
+<title>ABC School</title>
 <link href="${pageContext.servletContext.contextPath}/css/layoutstyle.css" rel="stylesheet" type="text/css" />
 
 </head>
