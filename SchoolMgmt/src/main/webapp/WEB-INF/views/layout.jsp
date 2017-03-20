@@ -23,8 +23,10 @@
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+		
 		<tiles:insertAttribute name="header" />
 		</div>
+		
 	</div>
 	<div class="row">
 		<div class="col-md-3">
@@ -36,7 +38,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
+		<div class="footer">
 		<tiles:insertAttribute name="footer" />
+		</div>
 		</div>
 	</div>
 </div>

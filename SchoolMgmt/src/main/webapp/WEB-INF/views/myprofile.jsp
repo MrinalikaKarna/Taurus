@@ -9,7 +9,9 @@
 <title>My Profile</title>
 </head>
 <body>
-
-This is my profile ${UsersModel.userName}
+<div class="panel panel-default">
+  <div class="panel-heading" align="center">My Profile</div>
+  <div class="panel-body" align="center">Hey, ${UsersModel.userName}</div>
+</div>
 </body>
 </html>
