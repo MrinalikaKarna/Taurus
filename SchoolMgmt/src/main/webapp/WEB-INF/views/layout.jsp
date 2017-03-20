@@ -3,23 +3,73 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page isELIgnored="false" %>
+
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>ABC School</title>
-<link href="${pageContext.servletContext.contextPath}/css/layoutstyle.css" rel="stylesheet" type="text/css" />
+    <title>ABC School</title>
 
-</head>
-<body>
-<tiles:insertAttribute name="header" />
- <div class="main">
-  <tiles:insertAttribute name="menu" />
-  <div class="rightPane">
-   <tiles:insertAttribute name="body" />
-  </div>
- </div>
-<tiles:insertAttribute name="footer" />
- 
-</body>
+
+    <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		<tiles:insertAttribute name="header" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+		<tiles:insertAttribute name="menu" />
+		</div>
+		<div class="col-md-9">
+		<tiles:insertAttribute name="body" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<tiles:insertAttribute name="footer" />
+		</div>
+	</div>
+</div>
+
+    <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/scripts.js"></script>
+  </body>
 </html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!-- <head> -->
+
+<!-- <title>ABC School</title> -->
+<%-- <link href="${pageContext.servletContext.contextPath}/css/layoutstyle.css" rel="stylesheet" type="text/css" /> --%>
+
+<!-- </head> -->
+<!-- <body> -->
+<%-- <tiles:insertAttribute name="header" /> --%>
+<!--  <div class="main"> -->
+<%--   <tiles:insertAttribute name="menu" /> --%>
+<!--   <div class="rightPane"> -->
+<%--    <tiles:insertAttribute name="body" /> --%>
+<!--   </div> -->
+<!--  </div> -->
+<%-- <tiles:insertAttribute name="footer" /> --%>
+ 
+<!-- </body> -->
+<!-- </html> -->
