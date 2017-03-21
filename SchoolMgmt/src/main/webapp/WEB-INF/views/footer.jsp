@@ -9,7 +9,7 @@
 
 
     <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.servletContext.contextPath}/css/style.css" rel="stylesheet">
+  
 
   </head>
   <body>

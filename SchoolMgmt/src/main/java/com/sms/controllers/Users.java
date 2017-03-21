@@ -58,7 +58,7 @@ public class Users {
 	
 	@RequestMapping(value="/myprofile", method=RequestMethod.GET)
 	public String showMyProfile(ModelMap model, HttpSession newsession){
-        
+		
          return "myprofile";
          }
 	

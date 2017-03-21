@@ -62,6 +62,11 @@ public class UsersDaoImpl implements UsersDao {
 		}
 		return usersModel;
 	}
+
+	public UsersModel getUserDetails(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

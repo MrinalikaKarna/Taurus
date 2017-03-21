@@ -117,6 +117,10 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>SchoolMgmt</finalName>
+		<finalName>SchoolMgmt</finalName>	
 	</build>
+	
+
+	
+
 </project>

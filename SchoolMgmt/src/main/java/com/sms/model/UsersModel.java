@@ -20,11 +20,28 @@ public class UsersModel {
 	
     @NotEmpty
 	@Column(name = "user_name")
-	String userName;
+	private String userName;
     
     @NotEmpty
 	@Column(name = "user_password")
-	String userPassword;
+	private String userPassword;
+    
+    @NotEmpty
+   	@Column(name = "user_address")
+    private String userAddress;
+    
+    @NotEmpty
+   	@Column(name = "user_class")
+    private String userClass;
+    
+    @NotEmpty
+   	@Column(name = "user_rollno")
+    private String userRollNo;
+    
+    @NotEmpty
+   	@Column(name = "user_DOB")
+    private String userDOB;
+    
 
 	public int getId() {
 		return id;
@@ -49,6 +66,39 @@ public class UsersModel {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public String getUserClass() {
+		return userClass;
+	}
+
+	public void setUserClass(String userClass) {
+		this.userClass = userClass;
+	}
+
+	public String getUserRollNo() {
+		return userRollNo;
+	}
+
+	public void setUserRollNo(String userRollNo) {
+		this.userRollNo = userRollNo;
+	}
+
+	public String getUserDOB() {
+		return userDOB;
+	}
+
+	public void setUserDOB(String userDOB) {
+		this.userDOB = userDOB;
+	}
+	
 	
 
 }

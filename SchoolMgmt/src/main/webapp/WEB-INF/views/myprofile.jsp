@@ -7,11 +7,53 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>My Profile</title>
+<link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="panel panel-default">
   <div class="panel-heading" align="center">My Profile</div>
-  <div class="panel-body" align="center">Hey, ${UsersModel.userName}</div>
+  <div class="panel-body" align="center">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-5">
+      Name
+    </div>
+    <div class="col-md-2">
+      ${UsersModel.userName}
+    </div>
+    </div>
+    <br>
+    
+  
+     <div class="row">
+    <div class="col-md-5">
+      Class
+    </div>
+    <div class="col-md-6">
+      ${UsersModel.userClass}
+    </div>
+  </div>
+  
+     <div class="row">
+    <div class="col-md-5">
+      Name
+    </div>
+    <div class="col-md-6">
+      ${UsersModel.userRollNo}
+    </div>
+  </div>
+  
+     <div class="row">
+    <div class="col-md-5">
+      Address
+    </div>
+    <div class="col-md-6">
+      ${UsersModel.userAddress}
+    </div>
+  </div>
+  
+  </div>
+  </div>
 </div>
 </body>
 </html>

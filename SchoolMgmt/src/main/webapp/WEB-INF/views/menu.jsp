@@ -28,9 +28,9 @@
 <div class="list-group">
  
     <a href="<%=request.getContextPath() %>/users/myprofile" class="list-group-item">My Profile</a>
-    <a href="page.htm?pageNo=2" class="list-group-item">Page 2</a>
-    <a href="page.htm?pageNo=3" class="list-group-item">Page 3</a>
-    <a href="page.htm?pageNo=4" class="list-group-item">Page 4</a>
+    <a href="page.htm?pageNo=2" class="list-group-item">My Report Card</a>
+    <a href="page.htm?pageNo=3" class="list-group-item">Achievements</a>
+    <a href="page.htm?pageNo=4" class="list-group-item">Calendar</a>
  
   </div>
 

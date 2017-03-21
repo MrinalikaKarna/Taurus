@@ -1,1 +1,145 @@
-# Empty CSS file for your own CSS
+body{
+	background-image: url("../images/street.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+
+.aa{
+	width:350px;
+	height:400px;
+	background-color: rgba(0,0,0,0.5);
+	margin:0 auto;
+	margin-top: 130px;
+	padding-top: 40px;
+	padding-left: 65px;
+	padding-right: 65px;
+	border-radius: 15px;
+	-webkit border-radius: 15px;
+	-o border-radius: 15px;
+	-mpz border-radius: 15px;
+	color: gray;
+	font-weight:bolder;
+	
+}
+
+
+img{
+	display: block;
+	margin: 0 auto;
+	
+}
+
+
+.aa h4{
+	font-size: 22px;
+	font-weight: normal;
+	text-align: center;
+}
+
+
+
+
+
+.aa input[type="text"]{
+	width:220px;
+	height:35px;
+	border: 0;
+	border-radius: 5px;
+	
+	-webkit border-radius: 5px;
+	-o border-radius: 5px;
+	-mpz border-radius: 5px;
+	padding-left: 8px;
+	
+}
+
+.aa input[type="password"]{
+	width:220px;
+	height:35px;
+	border: 0;
+	
+	border-radius: 5px;
+	-webkit border-radius: 5px;
+	-o border-radius: 5px;
+	-mpz border-radius: 5px;
+	padding-left: 8px;
+}
+
+.aa input[type="submit"]{
+	width:80px;
+	height:30px;
+	border: 0;
+	border-radius: 5px;
+    font-weight: bolder;
+	background-color:#fdaa60;
+	text-decoration: none;
+	margin: 0;
+	-webkit border-radius: 5px;
+	-o border-radius: 5px;
+	-mpz border-radius: 5px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*     body { */
+/*         background-color:teal; */
+       
+        
+/*     } */
+/*     .form-signin input[type="text"] { */
+/*         margin-bottom: 5px; */
+/*         border-bottom-left-radius: 0; */
+/*         border-bottom-right-radius: 0; */
+/*     } */
+/*     .form-signin input[type="password"] { */
+/*         margin-bottom: 10px; */
+/*         border-top-left-radius: 0; */
+/*         border-top-right-radius: 0; */
+/*     } */
+/*     .form-signin .form-control { */
+/*         position: relative; */
+/*         font-size: 16px; */
+/*         font-family: 'Open Sans', Arial, Helvetica, sans-serif; */
+/*         height: auto; */
+/*         padding: 10px; */
+/*         -webkit-box-sizing: border-box; */
+/*         -moz-box-sizing: border-box; */
+/*         box-sizing: border-box; */
+/*     } */
+/*     .vertical-offset-100 { */
+/*         padding-top: 100px; */
+/*     } */
+    
+/*      .vertical-offset-250 { */
+/*         padding-top: 250px; */
+/*     } */
+/*     .img-responsive { */
+/*     display: block; */
+/*     max-width: 100%; */
+/*     height: auto; */
+/*     margin: auto; */
+/*     } */
+    
+/*     .panel { */
+/*     margin-bottom: 20px; */
+/*     background-color: rgba(255, 255, 255, 0.75); */
+/*     border: 1px solid transparent; */
+/*     border-radius: 4px; */
+/*     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05); */
+/*     box-shadow: 0 1px 1px rgba(0, 0, 0, .05); */
+/*     } */

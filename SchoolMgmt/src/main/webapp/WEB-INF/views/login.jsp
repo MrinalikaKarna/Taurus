@@ -8,25 +8,26 @@
 <head>
 <title>Login Page</title>
 
-<%-- <link rel="stylesheet" type="text/css" href=" --%>
-<%--       <spring:url value="<%=request.getContextPath() %>/resources/style.css"/> "/> --%>
-<!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'> -->
-
 
 <link href="${pageContext.servletContext.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
-
 <body>
 
-<s:form commandName="userLoginData" action="users/welcome" method="post">
- <h4> Login Information </h4>
- UsersName <s:input path="userName"/>
- Password  <s:input path="userPassword"/>
+<div class="aa">
 
- <input type="submit" value="login"/>
+<img src="<spring:url value="/images/Applelogo.png"/>"/>
+
+
+<h4>ABC School</h4><br>
+
+<s:form commandName="userLoginData" action="users/welcome" method="post">
+ <s:input path="userName" type="text" /><br><br>
+ <s:input path="userPassword" type="Password" /><br><br>
+ <input type="submit" value="Login"/>
  </s:form>
 
+</div>
 
 </body>
 </html>
