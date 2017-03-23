@@ -19,6 +19,8 @@ public class UsersDaoImpl implements UsersDao {
 	
 	@Autowired
 	private SessionFactory session;
+	
+	private UsersModel usersModelDetail;
 
 	public void setSession(SessionFactory session) {
 		this.session = session;
@@ -64,8 +66,22 @@ public class UsersDaoImpl implements UsersDao {
 	}
 
 	public UsersModel getUserDetails(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.UsersModel as u where u.userName=?";
+		try{
+		    Query query = session1.createQuery(hql);
+		    query.setParameter(0, userName);
+		    usersModelDetail = (UsersModel) query.uniqueResult();
+		    tx.commit();
+		    session1.close();
+			}
+			catch(Exception e){
+				tx.rollback();
+				session1.close();
+				e.printStackTrace();
+			}
+			return usersModelDetail;
 	}
 	
 	

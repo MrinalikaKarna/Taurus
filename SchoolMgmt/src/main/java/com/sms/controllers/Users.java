@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sms.model.UsersModel;
@@ -49,6 +50,8 @@ public class Users {
 	}
 	}
 	
+	
+	
 	@RequestMapping(value="/Hello", method=RequestMethod.GET)
 	public String showWelcome(ModelMap model){
 		model.put("Hello", new UsersModel());
@@ -56,9 +59,12 @@ public class Users {
 	}
 	
 	
-	@RequestMapping(value="/myprofile", method=RequestMethod.GET)
-	public String showMyProfile(ModelMap model, HttpSession newsession){
-		
+	@RequestMapping(value="/myprofile",method=RequestMethod.GET)
+	public String showMyProfile(ModelMap model, @RequestParam("param1") String uName, HttpSession newsession)
+	{
+		UsersModel usersModelDetail = (UsersModel)usersServices.getUserDetails(uName);
+		newsession.setAttribute("UsersModelDetail", usersModelDetail);
+		model.put("UsersModelDetail",usersModelDetail);
          return "myprofile";
          }
 	

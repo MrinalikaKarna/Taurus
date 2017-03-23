@@ -3,10 +3,6 @@
 <%@ page isELIgnored="false" %>
 
 
-<!-- <div class="header"> -->
-<%--  <h1>Welcome, ${UsersModel.userName}</h1> --%>
-<%--  <a href="<%=request.getContextPath() %>/users/logout">Log Out</a> --%>
-<!-- </div> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,23 +12,69 @@
 
     <title>ABC School</title>
 
-
-    <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-  
+    
+    <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/css/customstyle.css" type="text/css" rel="stylesheet">  
 
   </head>
   <body>
-    <div class = "page-header">
-	<div class="col-md-9">
+    
+    
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Work Station</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">My Site</a></li>
+            <li><a href="#about">Image Gallery</a></li>
+            <li><a href="#about">Creative Corner</a></li>
+            <li><a href="#about">Forums</a></li>
+            
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Welcome, ${UsersModel.userName}</a></li>
+            <li><a href="<%=request.getContextPath() %>/users/logout">Log Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <header id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+             <h2><span class="glyphicon glyphicon-book" aria-hidden="true"></span>  ABC School  <small>Education first</small></h2>
+          </div>
+          <div class="col-md-2">
+					<form class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search"
+								name="srch-term" id="srch-term">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+        
+        </div>
+      </div>
+    </header>
+    
+    <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/scripts.js"></script>
 
-		<h3>ABC School</h3>
-	</div>
-	<div class="col-md-3">
-		<h3 class="text-right">
-			<h3>Welcome, ${UsersModel.userName}</h3>
-			<a href="<%=request.getContextPath() %>/users/logout">Log Out</a>
-		</h3>
-	</div>
-	</div>
 </body>
   </html>

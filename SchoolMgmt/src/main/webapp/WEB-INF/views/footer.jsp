@@ -9,13 +9,15 @@
 
 
     <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-  
+    <link
+	href="${pageContext.servletContext.contextPath}/css/customcss.css"
+	rel="stylesheet">
 
   </head>
   <body>
 
- <div>
-  <h6>Copyright © 2016-2017. All rights reserved</h6>
- </div>
+   <div>
+     <h6>Copyright © 2016-2017. All rights reserved</h6>
+   </div>
  </body>
  </html>

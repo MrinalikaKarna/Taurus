@@ -30,5 +30,9 @@ public class UsersServiceImpl implements UsersServices {
 		// TODO Auto-generated method stub
 		return usersDao.doLogin(usersModel);
 	}
+	
+	public UsersModel getUserDetails(String userName){
+		return usersDao.getUserDetails(userName);
+	};
 
 }
