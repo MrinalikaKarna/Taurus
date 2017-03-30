@@ -17,10 +17,13 @@
 <link
 	href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.servletContext.contextPath}/css/jquery.min.css"
+	rel="stylesheet">
 
 <!-- Custom CSS -->
 <link
-	href="${pageContext.servletContext.contextPath}/css/customcss.css"
+	href="${pageContext.servletContext.contextPath}/css/customstyle.css"
 	rel="stylesheet">
 
     <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
@@ -36,13 +39,13 @@
  <div class="row">
    <div class="col-md-3">
 				<div class="list-group">
-				    <a href="<%=request.getContextPath() %>/users/Hello?method=GET" class="list-group-item active main-color-bg">
-					<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Announcements </a>
-					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UsersModel.userName}" class="list-group-item">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> My Profile </a> <a
-						href="#" class="list-group-item">
+				    <a href="<%=request.getContextPath() %>/users/Hello?method=GET" class="list-group-item">
+				    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Announcements </a>
+					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UserDetails.mobilenumber}" class="list-group-item">
+					 <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> My Profile </a> <a
+						href="<%=request.getContextPath() %>/users/reportcard" class="list-group-item">
 						<span class="glyphicon glyphicon-education" aria-hidden="true"></span> Report Card</a> <a
-						href="#" class="list-group-item">
+						href="<%=request.getContextPath() %>/users/leaves" class="list-group-item">
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Leaves and Calendar</a> <a href="#"
 						class="list-group-item">
 						<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Creative Corner</a>
@@ -52,12 +55,24 @@
  </div>
 </div>
 
-<%-- <%-- <script type="text/javascript"> --%> 
-<!-- // $(".list-group list-group-item").click(function(e) { -->
-<!-- // 	   $(".list-group list-group-item").removeClass("active"); -->
-<!-- // 	   $(e.target).addClass("active"); -->
-<!-- // 	}); -->
-<%-- <%-- </script> --%> 
+<script type="text/javascript"> 
+$(function(){
+    console.log('ready');
+    
+    $('.list-group a').click(function(e) { 
+        $that = $(this);
+        $('.list-group a').removeClass('active');
+        $that.addClass('active');
+        
+        
+    });
+})
+
+// $(".list-group a").click(function(e) {
+//    $(".list-group a").removeClass("active");
+//    $(e.target).addClass("active");
+// });
+ </script> 
 
 
 

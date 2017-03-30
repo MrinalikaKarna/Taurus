@@ -2,6 +2,7 @@ package com.sms.dao;
 
 import java.util.List;
 
+import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 
 public interface UsersDao {
@@ -10,6 +11,6 @@ public interface UsersDao {
 	public boolean delete(UsersModel usersModel);
 	public boolean SaveorUpdate(UsersModel usersModel);
 	public UsersModel doLogin(UsersModel usersModel);
-	public UsersModel getUserDetails(String userName);
+	public UserDetails getUserDetails(long mobilenumber);
 
 }

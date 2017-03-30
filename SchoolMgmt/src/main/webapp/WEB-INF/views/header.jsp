@@ -41,7 +41,7 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, ${UsersModel.userName}</a></li>
+            <li><a href="#">Welcome, ${UsersModelDetail.firstname} ${UsersModelDetail.lastname}</a></li>
             <li><a href="<%=request.getContextPath() %>/users/logout">Log Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->

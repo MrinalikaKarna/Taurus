@@ -32,7 +32,7 @@
       <bean id="dataSource"
             class="org.springframework.jdbc.datasource.DriverManagerDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-            <property name="url" value="jdbc:mysql://localhost:3306/abcschool" />
+            <property name="url" value="jdbc:mysql://localhost:3306/hcsschool" />
             <property name="username" value="root" />
             <property name="password" value="abc123" />
       </bean>
@@ -50,7 +50,7 @@
 			  <props>
 					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 					<prop key="hibernate.show_sql">true</prop>
-					<prop key="hibernate.default_schema">abcschool</prop>
+					<prop key="hibernate.default_schema">hcsschool</prop>
 					<prop key="format_sql">true</prop>
 					<prop key="use_sql_comments">true</prop>
 			  </props>
@@ -58,6 +58,7 @@
 			<property name="annotatedClasses">
 			<list>
 				  <value>com.sms.model.UsersModel</value> <!-- Entity classes-->
+				  <value>com.sms.model.UserDetails</value>
 			</list>
 			</property>
 

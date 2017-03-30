@@ -1,6 +1,17 @@
 body{
 
 }
+
+.active {
+    background-color: #4CAF50 !important;
+    color: white;
+}
+
+.list-group-item.active{
+     background-color: black !important;
+  border-color: #aed248;
+
+}
 	
 .navbar{
     height: 33px !important;

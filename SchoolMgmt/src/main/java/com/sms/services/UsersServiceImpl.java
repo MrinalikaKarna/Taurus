@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
+import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 
 @Service("usersServices")
@@ -31,8 +32,10 @@ public class UsersServiceImpl implements UsersServices {
 		return usersDao.doLogin(usersModel);
 	}
 	
-	public UsersModel getUserDetails(String userName){
-		return usersDao.getUserDetails(userName);
+
+
+	public UserDetails getUserDetails(long mobilenumber) {
+		return usersDao.getUserDetails(mobilenumber);
 	};
 
 }

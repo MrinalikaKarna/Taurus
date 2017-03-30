@@ -19,6 +19,16 @@
   <put-attribute name="body" value="/WEB-INF/views/myprofile.jsp" />
  </definition>
  
+ <definition name="reportcard" extends="baseLayout">
+  <put-attribute name="title" value="Report Card" />
+  <put-attribute name="body" value="/WEB-INF/views/reportcard.jsp" />
+ </definition>
+ 
+  <definition name="leaves" extends="baseLayout">
+  <put-attribute name="title" value="Leaves n Calendar" />
+  <put-attribute name="body" value="/WEB-INF/views/leaves.jsp" />
+ </definition>
+ 
  <definition name="login" extends="baseLayout">
   <put-attribute name="title" value="Login"/>
   <put-attribute name="header" value="" />

@@ -2,6 +2,7 @@ package com.sms.services;
 
 import java.util.List;
 
+import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 
 public interface UsersServices {
@@ -9,5 +10,5 @@ public interface UsersServices {
 	public boolean delete(UsersModel usersModel);
 	public boolean SaveorUpdate(UsersModel usersModel);
 	public UsersModel doLogin(UsersModel usersModel);
-	public UsersModel getUserDetails(String userName);
+	public UserDetails getUserDetails(long mobilenumber);
 }
