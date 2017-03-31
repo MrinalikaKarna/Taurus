@@ -59,6 +59,7 @@
 			<list>
 				  <value>com.sms.model.UsersModel</value> <!-- Entity classes-->
 				  <value>com.sms.model.UserDetails</value>
+				  <value>com.sms.model.Leaves</value>
 			</list>
 			</property>
 

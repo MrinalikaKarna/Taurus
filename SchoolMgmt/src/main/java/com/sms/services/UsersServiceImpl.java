@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
+import com.sms.model.Leaves;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 
@@ -36,6 +37,10 @@ public class UsersServiceImpl implements UsersServices {
 
 	public UserDetails getUserDetails(long mobilenumber) {
 		return usersDao.getUserDetails(mobilenumber);
+	}
+
+	public boolean saveUserLeaves(Leaves leaves) {
+		return usersDao.saveUserLeaves(leaves);
 	};
 
 }

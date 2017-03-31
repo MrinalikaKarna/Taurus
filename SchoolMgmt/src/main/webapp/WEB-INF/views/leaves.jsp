@@ -25,7 +25,7 @@
  <div class="container-fluid">
   <div class="row">
    <div class="col-md-6 col-sm-6 col-xs-12">
-    <form method="post">
+    <s:form commandName="userLeaveData" action="leaves" method="post">
      <div class="form-group ">
       <label class="control-label requiredField" for="fromdate">
        From Date
@@ -38,7 +38,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
-       <input class="form-control" id="fromdate" name="fromdate" placeholder="DD/MM/YYYY" type="text"/>
+       <s:input path="fromdate" class="form-control" id="fromdate" name="fromdate" placeholder="DD/MM/YYYY" type="date"/>
       </div>
       <span class="help-block" id="hint_fromdate">
        Enter Start Date
@@ -53,7 +53,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
-       <input class="form-control" id="todate" name="todate" placeholder="DD/MM/YYYY" type="text"/>
+       <s:input path="todate" class="form-control" id="todate" name="todate" placeholder="DD/MM/YYYY" type="date"/>
       </div>
       <span class="help-block" id="hint_todate">
        Enter End Date
@@ -66,7 +66,7 @@
         *
        </span>
       </label>
-      <textarea class="form-control" cols="40" id="reasontext" name="reasontext" rows="10"></textarea>
+      <s:input path="reason" class="form-control" cols="40" id="reasontext" name="reasontext" rows="10" type=""/>
      </div>
      <div class="form-group">
       <div>
@@ -75,7 +75,7 @@
        </button>
       </div>
      </div>
-    </form>
+    </s:form>
    </div>
   </div>
  </div>

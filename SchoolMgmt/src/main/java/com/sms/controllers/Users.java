@@ -5,12 +5,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sms.model.Leaves;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 import com.sms.services.UsersServiceImpl;
@@ -64,11 +67,11 @@ public class Users {
 	
 	
 	@RequestMapping(value="/myprofile",method=RequestMethod.GET)
-	public String showMyProfile(ModelMap model, @RequestParam("param1") long mnumber, HttpSession newsession)
+	public String showMyProfile(ModelMap model, @RequestParam("param1") long mnumber)
 	{
 		UserDetails usersModelDetail = (UserDetails)usersServices.getUserDetails(mnumber);
-		newsession.setAttribute("UsersModelDetail", usersModelDetail);
-		model.put("UsersModelDetail",usersModelDetail);
+		//newsession.setAttribute("UsersModelDetail", usersModelDetail);
+		model.addAttribute("UsersModelDetail",usersModelDetail);
          return "myprofile";
          }
 	
@@ -76,21 +79,37 @@ public class Users {
 	@RequestMapping(value="/reportcard",method=RequestMethod.GET)
 	public String showMyReportCard(HttpSession newsession)
 	{
-//		UserDetails usersModelDetail = (UserDetails)usersServices.getUserDetails(mnumber);
-//		newsession.setAttribute("UsersModelDetail", usersModelDetail);
-//		model.put("UsersModelDetail",usersModelDetail);
          return "reportcard";
          }
 	
 	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
-	public String showLeaves(HttpSession newsession)
-	{
-//		UserDetails usersModelDetail = (UserDetails)usersServices.getUserDetails(mnumber);
-//		newsession.setAttribute("UsersModelDetail", usersModelDetail);
-//		model.put("UsersModelDetail",usersModelDetail);
+	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)
+	{   
+		model.addAttribute("userid", userid);
+		model.addAttribute("userLeaveData", new Leaves());
          return "leaves";
          }
+	
+	
+	@RequestMapping(value="/leaves", method=RequestMethod.POST)
+	public String applyLeaves(ModelMap model, @ModelAttribute("userLeaveData") Leaves leaves)
+	{if(leaves.getFromdate()!=null && leaves.getReason()!=null)
+	{   
+//		leaves.setUserid(userid);
+		leaves.setStatus("Pending");
+		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
+		if (leaveUpdateStatus==true){
+			model.addAttribute("Status", true);
+		}else{
+			model.addAttribute("Status", false);
+			
+		}
+	}else{
+		return "redirect:leaves";
+	}
+	return "redirect:leaves";
+	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String showLogout(ModelMap model, HttpSession newsession){

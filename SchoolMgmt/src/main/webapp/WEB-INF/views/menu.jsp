@@ -43,9 +43,9 @@
 				    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Announcements </a>
 					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UserDetails.mobilenumber}" class="list-group-item">
 					 <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> My Profile </a> <a
-						href="<%=request.getContextPath() %>/users/reportcard" class="list-group-item">
+						href="<%=request.getContextPath() %>/users/reportcard?method=GET&param2=${UserDetails.userid}" class="list-group-item">
 						<span class="glyphicon glyphicon-education" aria-hidden="true"></span> Report Card</a> <a
-						href="<%=request.getContextPath() %>/users/leaves" class="list-group-item">
+						href="<%=request.getContextPath() %>/users/leaves?method=GET&param3=${UserDetails.userid}" class="list-group-item">
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Leaves and Calendar</a> <a href="#"
 						class="list-group-item">
 						<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Creative Corner</a>
