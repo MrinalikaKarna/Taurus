@@ -2,16 +2,19 @@ package com.sms.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sms.model.Leaves;
 import com.sms.model.UserDetails;
@@ -86,7 +89,7 @@ public class Users {
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
 	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)
 	{   
-		model.addAttribute("userid", userid);
+		model.addAttribute("userId", userid);
 		model.addAttribute("userLeaveData", new Leaves());
          return "leaves";
          }
@@ -94,21 +97,24 @@ public class Users {
 	
 	@RequestMapping(value="/leaves", method=RequestMethod.POST)
 	public String applyLeaves(ModelMap model, @ModelAttribute("userLeaveData") Leaves leaves)
-	{if(leaves.getFromdate()!=null && leaves.getReason()!=null)
+	{
+		if(leaves.getFromdate()!=null && leaves.getReason()!=null)
 	{   
 //		leaves.setUserid(userid);
 		leaves.setStatus("Pending");
 		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
 		if (leaveUpdateStatus==true){
 			model.addAttribute("Status", true);
+			return "leaves";
 		}else{
 			model.addAttribute("Status", false);
+			return "leaves";
 			
 		}
 	}else{
 		return "redirect:leaves";
 	}
-	return "redirect:leaves";
+	
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)

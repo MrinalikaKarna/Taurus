@@ -38,6 +38,7 @@
         <i class="fa fa-calendar">
         </i>
        </div>
+     <s:input path="userid" type="hidden" value='${userId}'/> 
        <s:input path="fromdate" class="form-control" id="fromdate" name="fromdate" placeholder="DD/MM/YYYY" type="date"/>
       </div>
       <span class="help-block" id="hint_fromdate">
@@ -73,6 +74,7 @@
        <button class="btn btn-warning " name="submit" type="submit">
         Submit
        </button>
+       
       </div>
      </div>
     </s:form>
@@ -87,6 +89,8 @@
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 <!-- Include jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
 
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>

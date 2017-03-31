@@ -2,11 +2,13 @@ package com.sms.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -39,10 +41,18 @@ public class Leaves {
     @NotEmpty
 	@Column(name = "status")
 	private String status;
+    
+//    @ManyToOne
+//    private UserDetails userDetails;
 
 	public int getId() {
 		return id;
 	}
+	
+	public Leaves(){
+		
+	}
+	
 
 	public void setId(int id) {
 		this.id = id;
@@ -87,9 +97,17 @@ public class Leaves {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+//
+//	public UserDetails getUserDetails() {
+//		return userDetails;
+//	}
+//
+//	public void setUserDetails(UserDetails userDetails) {
+//		this.userDetails = userDetails;
+//	}
 
     
-
+    
   
 
 
