@@ -100,7 +100,6 @@ public class Users {
 	{
 		if(leaves.getFromdate()!=null && leaves.getReason()!=null)
 	{   
-//		leaves.setUserid(userid);
 		leaves.setStatus("Pending");
 		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
 		if (leaveUpdateStatus==true){
@@ -112,7 +111,7 @@ public class Users {
 			
 		}
 	}else{
-		return "redirect:leaves";
+		return "leaves";
 	}
 	
 	}

@@ -15,13 +15,17 @@
 
 
     <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.servletContext.contextPath}/css/customstyle.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/scripts.js"></script>
     
 
   </head>
   <body>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" id = "baselayout">
 	<div class="row">
 		<div class="col-md-12">
 		
@@ -29,7 +33,7 @@
 		</div>
 		
 	</div>
-	<div class="row">
+	<div class="row" id="contentbody">
 		<div class="col-md-3">
 		<tiles:insertAttribute name="menu" />
 		</div>
@@ -46,26 +50,23 @@
 	</div>
 </div>
 
-    <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/js/scripts.js"></script>
     
     <script>
-        $ (Document). ready (function () {
+    $ (Document). ready (function () {
 
-        $ ('. PageAction'). click (function (e) {
-        LoadPage (e)
-        });
+    	$ ('. PageAction'). click (function (e) {
+    	LoadPage (e)
+    	});
 
-        function LoadPage (e) {
-        e.preventDefault ();
-        console.log (e)
-        console.log (e.currentTarget.pathname);
-        $ ('# baseLayout'). children (). remove ();
-        $ ('# baseLayout'). Load ("baseLayout? Method =" + e.currentTarget.pathname);
-         }
+    	function LoadPage (e) {
+    	e.preventDefault ();
+    	console.log (e)
+    	console.log (e.currentTarget.pathname);
+    	$ ('#baselayout').children (). remove ();
+    	$ ('#baselayout').load ("baselayout?" + e.currentTarget.pathname);
+    	}
 
-         });
+    	});
 
 </script>
   </body>

@@ -5,11 +5,7 @@
 
 
 <html>
-<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
 
-<!--Font Awesome (added because you use icons in your prepend/append)-->
-<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 
 <!-- Inline CSS based on choices in "Settings" tab -->
 <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: #ffffff !important;}.bootstrap-iso .form-control:focus { border-color: #f48f08;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(244, 143, 8, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(244, 143, 8, 0.6);} .asteriskField{color: red;}</style>
@@ -71,7 +67,7 @@
      </div>
      <div class="form-group">
       <div>
-       <button class="btn btn-warning " name="submit" type="submit">
+       <button class="btn btn-warning " name="submit" type="submit" id="submitbtn">
         Submit
        </button>
        
@@ -117,5 +113,19 @@ jQuery( document ).ready(function( $ ){
         })
 
     })
+</script>
+
+<script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+<script>
+$(function() {
+    $("#submitbtn").click( function(){
+            if ("${Status}" == "true") {
+                alert("Leave Submitted"); //checked
+            }
+            else {
+                alert("Try again"); 
+            }}
+     );
+})
 </script>
 </html>

@@ -17,9 +17,9 @@
     <link href="${pageContext.servletContext.contextPath}/css/customstyle.css" type="text/css" rel="stylesheet">  
 
   </head>
-  <body>
+  <body >
     
-    
+   <div id="headerall">
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -41,7 +41,7 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, ${UsersModelDetail.firstname} ${UsersModelDetail.lastname}</a></li>
+            <li><a href="#">Welcome, ${UserDetails.firstname} ${UserDetails.lastname}</a></li>
             <li><a href="<%=request.getContextPath() %>/users/logout">Log Out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -70,7 +70,10 @@
         
         </div>
       </div>
+      
     </header>
+    
+    </div> 
     
     <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
