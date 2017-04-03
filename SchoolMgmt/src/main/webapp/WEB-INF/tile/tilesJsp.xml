@@ -10,7 +10,6 @@
  </definition>
 
  <definition name="Hello" extends="baseLayout">
-  <put-attribute name="title" value="Hello" />
   <put-attribute name="body" value="/WEB-INF/views/Hello.jsp" />
  </definition>
  

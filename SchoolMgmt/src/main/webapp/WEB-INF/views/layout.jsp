@@ -49,6 +49,25 @@
     <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.servletContext.contextPath}/js/scripts.js"></script>
+    
+    <script>
+        $ (Document). ready (function () {
+
+        $ ('. PageAction'). click (function (e) {
+        LoadPage (e)
+        });
+
+        function LoadPage (e) {
+        e.preventDefault ();
+        console.log (e)
+        console.log (e.currentTarget.pathname);
+        $ ('# baseLayout'). children (). remove ();
+        $ ('# baseLayout'). Load ("baseLayout? Method =" + e.currentTarget.pathname);
+         }
+
+         });
+
+</script>
   </body>
 </html>
 

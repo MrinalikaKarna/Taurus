@@ -68,9 +68,21 @@ public class UserDetails {
  
   	@Column(name = "altmobilenumber")
     private long altmobilenumber;
+  	
+  	@NotEmpty
+  	@Column(name = "userrole")
+  	private String userrole;
     
     
-    public String getGender() {
+    public String getUserrole() {
+		return userrole;
+	}
+
+	public void setUserrole(String userrole) {
+		this.userrole = userrole;
+	}
+
+	public String getGender() {
 		return gender;
 	}
 

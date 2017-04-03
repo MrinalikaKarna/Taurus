@@ -47,6 +47,11 @@
 					</tr>
 					
 					<tr>
+						<td><b>Role :</b></td>
+						<td><b>${UsersModelDetail.userrole}</b></td>
+					</tr>
+					
+					<tr>
 						<td><b>Father's Name :</b></td>
 						<td><b>${UsersModelDetail.fathersname}</b></td>
 					</tr>
