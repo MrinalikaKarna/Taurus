@@ -46,6 +46,8 @@
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Leaves and Calendar</a>
 					 <a href="#" class="list-group-item" id="menu5">
 						<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Creative Corner</a>
+					<a href="<%=request.getContextPath() %>/users/admin?method=GET&param3=${UserDetails.userid}" class="list-group-item" id="menu6">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Admin Activities</a>
 						 
 				</div>
 			</div> 

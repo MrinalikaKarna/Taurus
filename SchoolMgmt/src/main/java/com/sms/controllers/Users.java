@@ -86,6 +86,12 @@ public class Users {
          }
 	
 	
+	@RequestMapping(value="/admin",method=RequestMethod.GET)
+	public String showAdmin(HttpSession newsession)
+	{
+         return "admin";
+         }
+	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
 	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)
 	{   
