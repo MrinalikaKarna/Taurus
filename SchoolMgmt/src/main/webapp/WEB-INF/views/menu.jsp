@@ -54,24 +54,28 @@
  </div>
 </div>
 
-<script type="text/javascript"> 
+<%-- <script type="text/javascript">  --%>
 
-//Hide menu according to user role... Activate below code when needed... Below code was successful..
+<!-- //Hide menu according to user role... Activate below code when needed... Below code was successful.. -->
 
-// switch("${UserDetails.userrole}") {
-// case "Teacher":
-//     $('#menu3')
-//     .css('display','none')
-//  break;
-// case "Student":
-//     $('#menu5')
-//     .css('display','none')
-//  break;
-// default:
-//  break;
-// }
+<%-- // switch("${UserDetails.userrole}") { --%>
+<!-- // case "Teacher": -->
+<!-- //     $('#menu3') -->
+<!-- //     .css('display','none') -->
+<!-- //  break; -->
+<!-- // case "Student": -->
+<!-- //     $('#menu5') -->
+<!-- //     .css('display','none') -->
+<!-- //  break; -->
+<!-- // default: -->
+<!-- //  break; -->
+<!-- // } -->
 
- </script> 
+<%--  </script>  --%>
+
+<script>
+
+</script>
 
 
 

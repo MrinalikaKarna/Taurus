@@ -345,6 +345,7 @@ td, th {
 	content: "\e008"
 }
 
+
 .glyphicon-film:before {
 	content: "\e009"
 }
@@ -5552,6 +5553,15 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 
 .alert-info .alert-link {
 	color: #245269
+}
+
+.clickable{
+    cursor: pointer;   
+}
+
+.panel-heading span {
+	margin-top: -20px;
+	font-size: 15px;
 }
 
 .alert-warning {

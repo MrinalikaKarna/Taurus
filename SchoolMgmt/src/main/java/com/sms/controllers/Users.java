@@ -92,6 +92,12 @@ public class Users {
          return "admin";
          }
 	
+	@RequestMapping(value="/addstudentdetails",method=RequestMethod.GET)
+	public String addStudentDetails(HttpSession newsession)
+	{
+         return "addstudentdetails";
+         }
+	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
 	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)
 	{   
@@ -104,7 +110,7 @@ public class Users {
 	@RequestMapping(value="/leaves", method=RequestMethod.POST)
 	public String applyLeaves(ModelMap model, @ModelAttribute("userLeaveData") Leaves leaves)
 	{
-		if(leaves.getFromdate()!=null && leaves.getReason()!=null)
+    if(leaves.getFromdate()!=null && leaves.getReason()!=null && !leaves.getReason().isEmpty())
 	{   
 		leaves.setStatus("Pending");
 		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
@@ -116,9 +122,10 @@ public class Users {
 			return "leaves";
 			
 		}
-	}else{
+	}else if(leaves.getFromdate()== null && leaves.getTodate()== null && leaves.getReason().isEmpty()){
 		return "leaves";
 	}
+	return "leaves";
 	
 	}
 	

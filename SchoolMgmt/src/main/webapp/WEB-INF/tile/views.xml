@@ -23,6 +23,10 @@
   <put-attribute name="body" value="/WEB-INF/views/admin.jsp" />
  </definition>
  
+ <definition name="addstudentdetails" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/addstudentdetails.jsp" />
+ </definition>
+ 
  <definition name="login" extends="baseLayout">
   <put-attribute name="header" value="" />
   <put-attribute name="menu" value="" />

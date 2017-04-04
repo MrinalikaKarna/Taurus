@@ -118,14 +118,15 @@ jQuery( document ).ready(function( $ ){
 <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
 <script>
 $(function() {
-    $("#submitbtn").click( function(){
+//     $("#submitbtn").click( function(){
             if ("${Status}" == "true") {
                 alert("Leave Submitted"); //checked
             }
-            else {
-                alert("Try again"); 
-            }}
-     );
-})
+            else if ("${Status}" == "false") {
+                alert("Please try again"); //checked
+            }})
+            
+//      );
+// })
 </script>
 </html>
