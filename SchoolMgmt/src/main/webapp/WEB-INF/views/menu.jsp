@@ -37,7 +37,7 @@
    <div class="col-md-3">
 				<div class="list-group">
 				    <a href="<%=request.getContextPath() %>/users/Hello?method=GET" class="list-group-item" id="menu1" >
-				    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Announcements </a>
+				    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Events </a>
 					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UserDetails.mobilenumber}" class="list-group-item" id="menu2">
 					 <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> My Profile </a>
 					 <a href="<%=request.getContextPath() %>/users/reportcard?method=GET&param2=${UserDetails.userid}" class="list-group-item" id="menu3">
@@ -46,8 +46,12 @@
 						<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Leaves and Calendar</a>
 					 <a href="#" class="list-group-item" id="menu5">
 						<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Creative Corner</a>
-					<a href="<%=request.getContextPath() %>/users/admin?method=GET&param3=${UserDetails.userid}" class="list-group-item" id="menu6">
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Admin Activities</a>
+					<a href="<%=request.getContextPath() %>/users/studentadmin?method=GET&param3=${UserDetails.userid}" class="list-group-item" id="menu6">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Student's Admin Activities</a>
+					<a href="<%=request.getContextPath() %>/users/teacheradmin?method=GET&param3=${UserDetails.userid}" class="list-group-item" id="menu6">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Teacher's Admin Activities</a>
+					<a href="<%=request.getContextPath() %>/users/supportadmin?method=GET&param3=${UserDetails.userid}" class="list-group-item" id="menu6">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Support's Admin Activities</a>
 						 
 				</div>
 			</div> 
