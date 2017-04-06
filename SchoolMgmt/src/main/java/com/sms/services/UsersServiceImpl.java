@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
 import com.sms.model.Leaves;
+import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 
@@ -41,6 +42,14 @@ public class UsersServiceImpl implements UsersServices {
 
 	public boolean saveUserLeaves(Leaves leaves) {
 		return usersDao.saveUserLeaves(leaves);
-	};
+	}
+
+	public List<NewsEvent> getNewsEventList() {
+		return usersDao.getNewsEventList();
+	}
+
+	public boolean saveNewsEvent(NewsEvent newsEvent) {
+		return  usersDao.saveNewsEvent(newsEvent);
+	}
 
 }

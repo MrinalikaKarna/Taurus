@@ -19,8 +19,16 @@
   <put-attribute name="body" value="/WEB-INF/views/leaves.jsp" />
  </definition>
  
-  <definition name="admin" extends="baseLayout">
-  <put-attribute name="body" value="/WEB-INF/views/admin.jsp" />
+  <definition name="studentadmin" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/studentadmin.jsp" />
+ </definition>
+ 
+ <definition name="teacheradmin" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/teacheradmin.jsp" />
+ </definition>
+ 
+ <definition name="supportadmin" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/supportadmin.jsp" />
  </definition>
  
  <definition name="addstudentdetails" extends="baseLayout">

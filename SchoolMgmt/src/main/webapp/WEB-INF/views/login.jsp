@@ -22,8 +22,8 @@
 <h4>ABC School</h4><br>
 
 <s:form commandName="userLoginData" action="users/welcome" method="post">
- <s:input path="mobilenumber" type="tel" value=""/><br><br>
- <s:input path="password" type="Password" value=""/><br><br>
+ <s:input path="mobilenumber" type="tel" placeholder="Mobile Number"/><br><br>
+ <s:input path="password" type="Password" placeholder="Password"/><br><br>
  <input type="submit" value="Login"/>
  </s:form>
 

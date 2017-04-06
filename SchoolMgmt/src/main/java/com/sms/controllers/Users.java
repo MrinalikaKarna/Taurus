@@ -1,5 +1,7 @@
 package com.sms.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sms.model.Leaves;
+import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
 import com.sms.services.UsersServiceImpl;
@@ -50,6 +53,8 @@ public class Users {
 			newsession.setAttribute("UsersModel", usersModel);
 			UserDetails userDetailsnew = usersServices.getUserDetails(usersModelnew.getMobilenumber());
 			newsession.setAttribute("UserDetails", userDetailsnew);
+			List<NewsEvent> newsevent = usersServices.getNewsEventList();
+			newsession.setAttribute("NewsEventData", newsevent);
 			return "redirect:Hello";
 		}else{
 			model.put("Failed", "login failed");
@@ -66,6 +71,8 @@ public class Users {
 	public String showWelcome(ModelMap model){
 		model.put("Hello", new UsersModel());
 		return "Hello";
+		
+		
 	}
 	
 	
@@ -86,10 +93,22 @@ public class Users {
          }
 	
 	
-	@RequestMapping(value="/admin",method=RequestMethod.GET)
-	public String showAdmin(HttpSession newsession)
+	@RequestMapping(value="/studentadmin",method=RequestMethod.GET)
+	public String showStudentAdmin(ModelMap model)
+	{    model.put("newsEventData", new NewsEvent());
+         return "studentadmin";
+         }
+	
+	@RequestMapping(value="/teacheradmin",method=RequestMethod.GET)
+	public String showTeacherAdmin(HttpSession newsession)
 	{
-         return "admin";
+         return "teacheradmin";
+         }
+	
+	@RequestMapping(value="/supportadmin",method=RequestMethod.GET)
+	public String showSupportAdmin(HttpSession newsession)
+	{
+         return "supportadmin";
          }
 	
 	@RequestMapping(value="/addstudentdetails",method=RequestMethod.GET)
@@ -126,6 +145,25 @@ public class Users {
 		return "leaves";
 	}
 	return "leaves";
+	
+	}
+	
+	@RequestMapping(value="submitNewsEventData", method=RequestMethod.POST)
+	public String submitNewsEventData(ModelMap model, @ModelAttribute("newsEventData") NewsEvent newsEvent)
+	{
+    if(!newsEvent.getTitle().isEmpty() && !newsEvent.getContent().isEmpty())
+	{   
+		newsEvent.setCategory("News");
+		boolean newsEventUpdateStatus = usersServices.saveNewsEvent(newsEvent);
+		if (newsEventUpdateStatus==true){
+			model.addAttribute("NewsEventStatus", true);
+			return "studentadmin";
+		}else{
+			model.addAttribute("NewsEventStatusStatus", false);
+			return "studentadmin";			
+		}
+	}
+	return "studentadmin";
 	
 	}
 	
