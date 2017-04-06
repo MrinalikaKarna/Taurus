@@ -148,12 +148,50 @@ public class Users {
 	
 	}
 	
-	@RequestMapping(value="submitNewsEventData", method=RequestMethod.POST)
-	public String submitNewsEventData(ModelMap model, @ModelAttribute("newsEventData") NewsEvent newsEvent)
+	@RequestMapping(value="submitNewsData", method=RequestMethod.POST)
+	public String submitNewsData(ModelMap model, @ModelAttribute("newsEventData") NewsEvent newsEvent)
 	{
     if(!newsEvent.getTitle().isEmpty() && !newsEvent.getContent().isEmpty())
 	{   
 		newsEvent.setCategory("News");
+		boolean newsEventUpdateStatus = usersServices.saveNewsEvent(newsEvent);
+		if (newsEventUpdateStatus==true){
+			model.addAttribute("NewsEventStatus", true);
+			return "studentadmin";
+		}else{
+			model.addAttribute("NewsEventStatusStatus", false);
+			return "studentadmin";			
+		}
+	}
+	return "studentadmin";
+	
+	}
+	
+	@RequestMapping(value="submitEventData", method=RequestMethod.POST)
+	public String submitEventData(ModelMap model, @ModelAttribute("newsEventData") NewsEvent newsEvent)
+	{
+    if(!newsEvent.getTitle().isEmpty() && !newsEvent.getContent().isEmpty())
+	{   
+		newsEvent.setCategory("Event");
+		boolean newsEventUpdateStatus = usersServices.saveNewsEvent(newsEvent);
+		if (newsEventUpdateStatus==true){
+			model.addAttribute("NewsEventStatus", true);
+			return "studentadmin";
+		}else{
+			model.addAttribute("NewsEventStatusStatus", false);
+			return "studentadmin";			
+		}
+	}
+	return "studentadmin";
+	
+	}
+	
+	@RequestMapping(value="submitAnnouncementData", method=RequestMethod.POST)
+	public String submitAnnouncementData(ModelMap model, @ModelAttribute("newsEventData") NewsEvent newsEvent)
+	{
+    if(!newsEvent.getTitle().isEmpty() && !newsEvent.getContent().isEmpty())
+	{   
+		newsEvent.setCategory("Announcement");
 		boolean newsEventUpdateStatus = usersServices.saveNewsEvent(newsEvent);
 		if (newsEventUpdateStatus==true){
 			model.addAttribute("NewsEventStatus", true);

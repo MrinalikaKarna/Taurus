@@ -27,96 +27,45 @@
 <div class="row wrap">
     <div class="col-sm-3">
         <div class="row">
-            <div class="col-xs-12" id="newsdiv">
-<!--                 <h2>Side</h2> -->
-<!--                 <div class="panel panel-default"> -->
-<%--                     <div class="panel-heading"><h5>${NewsEventData[0].title}</h5></div> --%>
-<!--                     <div class="panel-body"> -->
-<%--                        ${NewsEventData[0].content}                   --%>
-<!--                     </div> -->
-<!--                     <div class="text-center"> -->
-<%--                         <a href="#"><span class="glyphicon glyphicon-plus"></span> Full Story</a> --%>
-<!--                     </div> -->
-<!--                 </div> -->
-<!--                 <hr /> -->
-<!--                 <div class="panel panel-default"> -->
-<%--                     <div class="panel-heading"><h5>${NewsEventData[1].title}</h5></h5></div> --%>
-<!--                     <div class="panel-body"> -->
-<%--                         ${NewsEventData[1].content} --%>
-<!--                     </div> -->
-<!--                     <div class="text-center"> -->
-<%--                         <a href="#"><span class="glyphicon glyphicon-plus"></span> Full Story</a> --%>
-<!--                     </div> -->
-<!--                 </div> -->
-<!--                 <hr /> -->
+            <div class="col-xs-12" id="announcementdiv">
+             <h4>Announcements</h4>
+
+
 
             </div>
         </div>
     </div>
     <div class="col-sm-9">
         <div class="row">
-            <div class="col-xs-12">
-                <h4>Article Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                </p>
-                <div class="text-center">
-                    <a href="#"><span class="glyphicon glyphicon-plus"></span> Full Story</a>
-                    <a href="#"><span class="glyphicon glyphicon-comment"></span> 12 Comments</a>
-                    <a href="#"><span class="glyphicon glyphicon-share"></span> 11 Shares</a>
-                </div>
+            <div class="col-xs-12" id="newseventdiv">
+              <h4>News n' Events</h4>
             </div>
         </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12">
-                <h4>Article Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                </p>
-                <div class="text-center">
-                    <a href="#"><span class="glyphicon glyphicon-plus"></span> Full Story</a>
-                    <a href="#"><span class="glyphicon glyphicon-comment"></span> 2 Comments</a>
-                    <a href="#"><span class="glyphicon glyphicon-share"></span> 211 Shares</a>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12">
-                <h4>Article Title</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                    Aliquam in felis sit amet augue.
-                </p>
-                <div class="text-center">
-                    <a href="#"><span class="glyphicon glyphicon-plus"></span> Full Story</a>
-                    <a href="#"><span class="glyphicon glyphicon-comment"></span> 7 Comments</a>
-                    <a href="#"><span class="glyphicon glyphicon-share"></span> 67 Shares</a>
-                </div>
-            </div>
-        </div>
-        <hr />
+
     </div>
 </div>
 
 <script type="text/javascript">
 $(function() {
     <c:forEach items="${NewsEventData}"  var="myItem" >
-    
-    newdiv = '<div class="panel panel-default">' + '<div class="panel-heading">' + '<h5>' + '<i class="fa fa-tasks fa-1x">' + '</i>' +  '${myItem.title}' + '</h5>' 
+    if ('${myItem.category}'=="Announcement"){
+    newdiv = '<div class="panel panel-default">' + '<div class="panel-heading">' + '<h5>' + '<i class="fa fa-bullhorn fa-1x">' + '</i>' + '  ' + '${myItem.title}' + '</h5>' 
 	+ '</div>' + '<div class="panel-body">' + '${myItem.content}' + '</div>' +
 	'<div class="text-center">' + '<a href="#">' + '<span class="glyphicon glyphicon-plus">' +
 	'</span>' + 'Full Story' + '</a>' + '</div>' + '</div>';
-	$("#newsdiv").append(newdiv);  
+	$("#announcementdiv").append(newdiv);
+	}else if('${myItem.category}'=="Event") {
+	 newdiv = '<div class="well">' + '<h4>' + '<i class="fa fa-calendar fa-1x">' + '</i>' + '  ' + '${myItem.title}' + '</h4>' + '<h5>' + '${myItem.fromdate}' + '</h5>' + '<p>' +
+	 '${myItem.content}' + '</p>' + '<div class="text-center">'  + '<a href="#">' + '<span class="glyphicon glyphicon-plus">' +
+	 '</span>' + 'Full Story' + '</a>' + '</div>' + '</div>';
+	 $("#newseventdiv").append(newdiv);	
+	}else{
+		newdiv = '<div class="well">' + '<h4>' + '<i class="fa fa-tasks fa-1x">' + '</i>' + '  ' + '${myItem.title}' + '</h4>' + '<p>' +
+		 '${myItem.content}' + '</p>' + '<div class="text-center">'  + '<a href="#">' + '<span class="glyphicon glyphicon-plus">' +
+		 '</span>' + 'Full Story' + '</a>' + '</div>' + '</div>';
+		 $("#newseventdiv").append(newdiv);
+	}
+    
     </c:forEach>
     
 })

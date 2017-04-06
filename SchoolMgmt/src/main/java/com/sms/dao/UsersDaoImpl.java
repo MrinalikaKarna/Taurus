@@ -1,5 +1,9 @@
 package com.sms.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -45,6 +49,14 @@ public class UsersDaoImpl implements UsersDao {
 		Query query = session1.createQuery(hql);
 		List<NewsEvent> newsEvent = (List<NewsEvent>) query.list();
 		List<NewsEvent> newsEvents = Lists.reverse(newsEvent);
+//		Iterator<NewsEvent> iterator = newsEvents.iterator();
+//		NewsEvent ne = (NewsEvent) iterator.next();
+//		Date fromdate = ne.getFromdate();
+//		Date todate = ne.getTodate();
+//		SimpleDateFormat Format = new SimpleDateFormat("dd-MM-yyyy");
+//		String dateBufferString1 = Format.format(fromdate);
+//		String dateBufferString2 = Format.format(todate);
+		
 		try {
 			tx.commit();
 			session1.close();
