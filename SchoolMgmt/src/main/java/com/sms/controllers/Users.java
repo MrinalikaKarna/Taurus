@@ -111,10 +111,10 @@ public class Users {
          return "supportadmin";
          }
 	
-	@RequestMapping(value="/addstudentdetails",method=RequestMethod.GET)
-	public String addStudentDetails(HttpSession newsession)
-	{
-         return "addstudentdetails";
+	@RequestMapping(value="/adduserdetails",method=RequestMethod.GET)
+	public String addStudentDetails(ModelMap model)
+	{    model.put("UserDetails", new UserDetails());
+         return "adduserdetails";
          }
 	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)

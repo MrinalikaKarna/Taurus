@@ -14,16 +14,6 @@
 	rel="stylesheet">
 </head>
 <body>
-	<div class="panel panel-default">
-		<div class="panel-heading main-color-bg">
-			<h2 class="panel-title">Report Card</h2>
-		</div>
-		<div class="panel-body" align="center">
-             
-
-
-
-		</div>
-	</div>
+  
 </body>
 </html>

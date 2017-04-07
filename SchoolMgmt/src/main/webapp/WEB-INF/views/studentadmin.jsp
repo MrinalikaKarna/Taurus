@@ -12,9 +12,13 @@
 <!-- 	rel="stylesheet"> -->
 <link href="${pageContext.servletContext.contextPath}/css/customstyle.css"
 	rel="stylesheet">
+
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 <link rel="stylesheet" type="text/css" href="http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
+
+<script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
 
 <body>
 <!--   <div class="container text-left"> -->
@@ -105,12 +109,12 @@
               
               <div class="form-group">
                 <label for="event-startdate">Start Date</label>
-                <s:input class="form-control" path="fromdate" id="event-startdate" name="date" placeholder="DD/MM/YYY" type="date"/>
+                <s:input class="form-control" path="fromdate" id="eventstartdate" name="date" placeholder="DD/MM/YYY" type="text"/>
               </div>
               
               <div class="form-group">
                 <label for="event-enddate">End Date</label>
-                <s:input class="form-control" path="todate" id="event-enddate" name="date" placeholder="DD/MM/YYY" type="date"/>
+                <s:input class="form-control" path="todate" id="eventenddate" name="date" placeholder="DD/MM/YYY" type="text"/>
               </div>
               
               <div class="form-group">
@@ -127,6 +131,16 @@
         </div>
     </div>
   </div>
+ <script type="text/javascript">
+ $(function(){           
+     if (!Modernizr.inputtypes.date) {
+         $('#eventstartdate').datepicker({
+               dateFormat : 'yy-mm-dd'
+             }
+          );
+     }
+ });
+</script>
 </div>
 
 
@@ -253,18 +267,18 @@
 
 <script>
 // $.noConflict();
-jQuery( document ).ready(function( $ ){
-        var date_input=$('input[name="date"]'); 
-        var container=$('#bootstrap-iso form').length>0 ? $('#bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'dd/mm/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
+// jQuery( document ).ready(function( $ ){
+//         var date_input=$('input[name="date"]'); 
+//         var container=$('#bootstrap-iso form').length>0 ? $('#bootstrap-iso form').parent() : "body";
+//         date_input.datepicker({
+//             format: 'dd/mm/yyyy',
+//             container: container,
+//             todayHighlight: true,
+//             autoclose: true,
+//         })
 
 
-    })
-</script>
+//     })
+<%-- </script> --%>
 
 </html>

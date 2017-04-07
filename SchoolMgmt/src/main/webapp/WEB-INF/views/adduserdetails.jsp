@@ -18,21 +18,6 @@
 <body>
 
 
-	<!-- 			<div class="container"> -->
-	<!-- 				<div class="col-md-1"></div> -->
-	<!-- 				<div class="col-md-4"> -->
-	<!-- 					<form method="post" enctype="multipart/form-data"> -->
-	<!-- 						<input type="file" id="files" name="files" multiple="multiple" /> -->
-	<!-- 						<p style="text-align: right; margin-top: 20px;"> -->
-	<!-- 							<input type="submit" value="Upload Student Details" -->
-	<!-- 								class="btn btn-lg btn-primary" /> -->
-	<!-- 						</p> -->
-	<!-- 					</form> -->
-	<!-- 				</div> -->
-	<!-- <!-- 				<div class="col-md-6"></div> -->
-	<!-- 			</div> -->
-
-
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Add through Form</h3>
@@ -40,14 +25,14 @@
 				class="glyphicon glyphicon-chevron-up"></i></span>
 		</div>
 		<div class="panel-body">
-			<form role="form">
+			<s:form role="form">
 				<div class="col-lg-6">
 
 					<div class="form-group">
-						<label for="InputName">Enter Name</label>
+						<label for="InputFirstName">First Name</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="InputName"
-								id="InputName" placeholder="Enter Name" required> <span
+							<s:input type="text" path="firstname" class="form-control" name="InputFirstName"
+								id="InputFirstName" placeholder="Enter First Name" required=""/> <span
 								class="input-group-addon"><span
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
@@ -82,7 +67,7 @@
 					<input type="submit" name="submit" id="submit" value="Submit"
 						class="btn btn-info pull-right">
 				</div>
-			</form>
+			</s:form>
 		</div>
 	</div>
 

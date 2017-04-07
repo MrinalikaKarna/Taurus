@@ -31,7 +31,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left"><a href="<%=request.getContextPath() %>/users/addstudentdetails?method=GET&param2=${UserDetails.userid}">Upload Student Details</a></span>
+                                <span class="pull-left"><a href="<%=request.getContextPath() %>/users/uploadmarks?method=GET&param2=${UserDetails.userid}">Upload Student Details</a></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
