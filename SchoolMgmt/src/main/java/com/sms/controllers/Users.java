@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sms.model.ClassDetails;
 import com.sms.model.Leaves;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
@@ -86,6 +87,8 @@ public class Users {
          }
 	
 	
+	
+	
 	@RequestMapping(value="/reportcard",method=RequestMethod.GET)
 	public String showMyReportCard(HttpSession newsession)
 	{
@@ -112,10 +115,29 @@ public class Users {
          }
 	
 	@RequestMapping(value="/adduserdetails",method=RequestMethod.GET)
-	public String addStudentDetails(ModelMap model)
-	{    model.put("UserDetails", new UserDetails());
-         return "adduserdetails";
+	public String addUserDetails(ModelMap model)
+	{   
+		List<ClassDetails> classDetails = usersServices.getClassDetailsList();
+	    model.addAttribute("ClassDetails", classDetails);
+		model.addAttribute("AddUserDetails", new UserDetails());
+		return "adduserdetails";
          }
+	
+	
+	@RequestMapping(value="/adduserdetails",method=RequestMethod.POST)
+	public String addUserDetailsPost(ModelMap model, @ModelAttribute("AddUserDetails") UserDetails userDetails)
+	{   
+		boolean userUpdateStatus = usersServices.saveUserUpdateDetails(userDetails);
+		if (userUpdateStatus==true){
+			model.addAttribute("UserUpdateStatus", true);
+			return "adduserdetails";
+		}else{
+			model.addAttribute("UserUpdateStatus", false);
+			return "adduserdetails";
+			
+		}
+         }
+	
 	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
 	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)

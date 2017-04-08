@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
+import com.sms.model.ClassDetails;
 import com.sms.model.Leaves;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
@@ -153,6 +154,41 @@ public class UsersDaoImpl implements UsersDao {
 			return false;
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ClassDetails> getClassDetailsList() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.ClassDetails";
+		Query query = session1.createQuery(hql);
+		List<ClassDetails> classDetails = (List<ClassDetails>) query.list();
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return classDetails;
+		
+	}
+
+	public boolean saveUserUpdateDetails(UserDetails userDetails) {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		try {
+			session1.save(userDetails);
+			tx.commit();
+			session1.close();
+			return true;
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

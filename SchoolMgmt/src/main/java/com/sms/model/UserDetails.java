@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,8 +40,8 @@ public class UserDetails {
     
     @NotEmpty
 	@Column(name = "mobilenumber")
-    @GeneratedValue(generator = "newgenerator")
-    @GenericGenerator(name="newgenerator",strategy="foreign",parameters={@Parameter(value="usersModel", name="property")} )
+//    @GeneratedValue(generator = "newgenerator")
+//    @GenericGenerator(name="newgenerator",strategy="foreign",parameters={@Parameter(value="usersModel", name="property")} )
 	private long mobilenumber;
     
     @NotEmpty
@@ -51,9 +52,10 @@ public class UserDetails {
   	@Column(name = "email")
     private String email;
     
-    @NotEmpty
-  	@Column(name = "class")
-    private String userclass;
+    @ManyToOne
+    @JoinColumn(name="classid")
+  	private ClassDetails classDetails;
+  	
     
     @NotEmpty
   	@Column(name = "fathersname")
@@ -75,6 +77,8 @@ public class UserDetails {
   	@Column(name = "userrole")
   	private String userrole;
     
+  	
+  	
     
     public String getUserrole() {
 		return userrole;
@@ -100,13 +104,7 @@ public class UserDetails {
 		this.email = email;
 	}
 
-	public String getUserclass() {
-		return userclass;
-	}
 
-	public void setUserclass(String userclass) {
-		this.userclass = userclass;
-	}
 
 	public String getFathersname() {
 		return fathersname;
@@ -192,6 +190,16 @@ public class UserDetails {
 	public void setMobilenumber(long mobilenumber) {
 		this.mobilenumber = mobilenumber;
 	}
+
+	public ClassDetails getClassDetails() {
+		return classDetails;
+	}
+
+	public void setClassDetails(ClassDetails classDetails) {
+		this.classDetails = classDetails;
+	}
+
+	
     
     
 

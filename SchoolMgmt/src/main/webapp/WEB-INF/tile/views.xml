@@ -31,8 +31,8 @@
   <put-attribute name="body" value="/WEB-INF/views/supportadmin.jsp" />
  </definition>
  
- <definition name="addstudentdetails" extends="baseLayout">
-  <put-attribute name="body" value="/WEB-INF/views/addstudentdetails.jsp" />
+ <definition name="adduserdetails" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/adduserdetails.jsp" />
  </definition>
  
  <definition name="login" extends="baseLayout">

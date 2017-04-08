@@ -30,27 +30,12 @@
 					</tr>
 					<tr>
 						<td><b>Class :</b></td>
-						<td><b>${UsersModelDetail.userclass}</b></td>
+						<td><b>${UsersModelDetail.classDetails.classname}</b></td>
 					</tr>
 					<tr>
 						<td><b>Roll No :</b></td>
 						<td><b>${UsersModelDetail.userid}</b></td>
 					</tr>
-					<tr>
-						<td><b>Address :</b></td>
-						<td><b>${UsersModelDetail.address}</b></td>
-					</tr>
-					
-					<tr>
-						<td><b>Gender :</b></td>
-						<td><b>${UsersModelDetail.gender}</b></td>
-					</tr>
-					
-					<tr>
-						<td><b>Role :</b></td>
-						<td><b>${UsersModelDetail.userrole}</b></td>
-					</tr>
-					
 					<tr>
 						<td><b>Address :</b></td>
 						<td><b>${UsersModelDetail.address}</b></td>

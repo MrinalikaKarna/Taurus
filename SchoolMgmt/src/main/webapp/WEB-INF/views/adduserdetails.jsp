@@ -25,7 +25,7 @@
 				class="glyphicon glyphicon-chevron-up"></i></span>
 		</div>
 		<div class="panel-body">
-			<s:form role="form">
+			<s:form role="form" commandName="AddUserDetails" action="adduserdetails" method="post">
 				<div class="col-lg-6">
 
 					<div class="form-group">
@@ -37,34 +37,129 @@
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
 					</div>
+					
 					<div class="form-group">
-						<label for="InputEmail">Enter Email</label>
+						<label for="InputLastName">Last Name</label>
 						<div class="input-group">
-							<input type="email" class="form-control" id="InputEmailFirst"
-								name="InputEmail" placeholder="Enter Email" required> <span
+							<s:input type="text" path="lastname" class="form-control" name="InputFirstName"
+								id="InputLastName" placeholder="Enter Last Name" required=""/> <span
 								class="input-group-addon"><span
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
 					</div>
+					
 					<div class="form-group">
-						<label for="InputEmail">Confirm Email</label>
+						<label for="InputAdress">Address</label>
 						<div class="input-group">
-							<input type="email" class="form-control" id="InputEmailSecond"
-								name="InputEmail" placeholder="Confirm Email" required>
-							<span class="input-group-addon"><span
+							<s:input type="text" path="address" class="form-control" name="InputAddress"
+								id="InputAddress" placeholder="Enter Address" required=""/> <span
+								class="input-group-addon"><span
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
 					</div>
+					
 					<div class="form-group">
-						<label for="InputMessage">Enter Message</label>
+						<label for="mobilenumber">Mobile Number</label>
 						<div class="input-group">
-							<textarea name="InputMessage" id="InputMessage"
-								class="form-control" rows="5" required></textarea>
-							<span class="input-group-addon"><span
+							<s:input type="text" path="mobilenumber" class="form-control" name="mobilenumber"
+								id="mobilenumber" placeholder="9999999999" required=""/> <span
+								class="input-group-addon"><span
 								class="glyphicon glyphicon-asterisk"></span></span>
 						</div>
 					</div>
-					<input type="submit" name="submit" id="submit" value="Submit"
+					
+					
+					<div class="form-group">
+						<label for="altmobilenumber">Alternate Mobile Number</label>
+						<div class="input-group">
+							<s:input type="text" path="altmobilenumber" class="form-control" name="altmobilenumber"
+								id="altmobilenumber" placeholder="9999999999" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="InputGender">Gender</label>
+						<div class="input-group">
+							<s:input type="text" path="gender" class="form-control" name="InputGender"
+								id="InputGender" placeholder="Enter Gender" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="InputEmail">Email</label>
+						<div class="input-group">
+							<s:input type="text" path="email" class="form-control" name="InputEmail"
+								id="InputEmail" placeholder="Enter Email" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					
+					
+					<div class="form-group">
+						<label for="InputClass">Class</label>
+						<div class="input-group" >
+							<s:select path="ClassDetails" name="InputClass" id="InputClass" type="text">
+							     <c:forEach var="classd" items="${ClassDetails}">
+                                    <s:option value="${classd.classid}" label="${classd.classname}" />
+                                  </c:forEach>
+
+				            </s:select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="InputFathersName">Father's Name</label>
+						<div class="input-group">
+							<s:input type="text" path="fathersname" class="form-control" name="InputFathersName"
+								id="InputFathersName" placeholder="Enter Father's Name" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="InputMothersName">Mother's Name</label>
+						<div class="input-group">
+							<s:input type="text" path="mothersname" class="form-control" name="InputMothersName"
+								id="InputMothersName" placeholder="Enter Mother's Name" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="InputRole">Role</label>
+						<div class="input-group">
+							<s:input type="text" path="userrole" class="form-control" name="InputRole"
+								id="InputRole" placeholder="Enter category" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="InputDOB">Date of Birth</label>
+						<div class="input-group">
+							<s:input type="text" path="dateofbirth" class="form-control" name="InputDOB"
+								id="InputDOB" placeholder="Enter DOB" required=""/> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-asterisk"></span></span>
+						</div>
+					</div>
+					
+					
+					
+				
+					
+					<input type="submit" name="submit" id="submit" value="Submit User Data"
 						class="btn btn-info pull-right">
 				</div>
 			</s:form>
@@ -72,22 +167,22 @@
 	</div>
 
 
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title">Bulk Upload</h3>
-			<span class="pull-right clickable"><i
-				class="glyphicon glyphicon-chevron-up"></i></span>
-		</div>
-		<div class="panel-body">
-			<form method="post" enctype="multipart/form-data">
-				<input type="file" id="files" name="files" multiple="multiple" />
-				<p style="text-align: right; margin-top: 20px;">
-					<input type="submit" value="Upload Student Details"
-						class="btn btn-lg btn-primary" />
-				</p>
-			</form>
-		</div>
-	</div>
+<%-- 	<div class="panel panel-primary"> --%>
+<%-- 		<div class="panel-heading"> --%>
+<%-- 			<h3 class="panel-title">Bulk Upload</h3> --%>
+<%-- 			<span class="pull-right clickable"><i --%>
+<%-- 				class="glyphicon glyphicon-chevron-up"></i></span> --%>
+<%-- 		</div> --%>
+<%-- 		<div class="panel-body"> --%>
+<%-- 			<form method="post" enctype="multipart/form-data"> --%>
+<%-- 				<input type="file" id="files" name="files" multiple="multiple" /> --%>
+<%-- 				<p style="text-align: right; margin-top: 20px;"> --%>
+<%-- 					<input type="submit" value="Upload Student Details" --%>
+<%-- 						class="btn btn-lg btn-primary" /> --%>
+<%-- 				</p> --%>
+<%-- 			</form> --%>
+<%-- 		</div> --%>
+<%-- 	</div> --%>
 
 
 	<script type="text/javascript"

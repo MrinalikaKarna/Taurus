@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
+import com.sms.model.ClassDetails;
 import com.sms.model.Leaves;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
@@ -50,6 +51,15 @@ public class UsersServiceImpl implements UsersServices {
 
 	public boolean saveNewsEvent(NewsEvent newsEvent) {
 		return  usersDao.saveNewsEvent(newsEvent);
+	}
+
+	public List<ClassDetails> getClassDetailsList() {
+		
+		return usersDao.getClassDetailsList();
+	}
+
+	public boolean saveUserUpdateDetails(UserDetails userDetails) {
+		return usersDao.saveUserUpdateDetails(userDetails);
 	}
 
 }
