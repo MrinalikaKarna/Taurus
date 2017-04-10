@@ -47,9 +47,7 @@ public class Users {
 	public String loginUser(ModelMap model, @ModelAttribute("userLoginData") UsersModel usersModel, HttpSession newsession)
 	{if(usersModel.getMobilenumber()!=0 && usersModel.getPassword()!=null)
 	{ 
-		UsersModel usersModelnew = usersServices.doLogin(usersModel);
-//		
-		
+		UsersModel usersModelnew = usersServices.doLogin(usersModel);			
 		if (usersModelnew!=null){
 			newsession.setAttribute("UsersModel", usersModel);
 			UserDetails userDetailsnew = usersServices.getUserDetails(usersModelnew.getMobilenumber());
@@ -119,14 +117,17 @@ public class Users {
 	{   
 		List<ClassDetails> classDetails = usersServices.getClassDetailsList();
 	    model.addAttribute("ClassDetails", classDetails);
-		model.addAttribute("AddUserDetails", new UserDetails());
+		model.addAttribute("AddUserData", new UserDetails());
 		return "adduserdetails";
          }
 	
 	
 	@RequestMapping(value="/adduserdetails",method=RequestMethod.POST)
-	public String addUserDetailsPost(ModelMap model, @ModelAttribute("AddUserDetails") UserDetails userDetails)
+	public String addUserDetailsPost(ModelMap model, @ModelAttribute("AddUserData") UserDetails userDetails)
 	{   
+//		UsersModel usersModel1 = new UsersModel();
+//		usersModel1.setPassword("abc123");
+//		userDetails.setUserModel(usersModel1);
 		boolean userUpdateStatus = usersServices.saveUserUpdateDetails(userDetails);
 		if (userUpdateStatus==true){
 			model.addAttribute("UserUpdateStatus", true);

@@ -58,7 +58,7 @@
 					</tr>
 				
 					<tr>
-						<td><b>Mother's Nmae :</b></td>
+						<td><b>Mother's Name :</b></td>
 						<td><b>${UsersModelDetail.mothersname}</b></td>
 					</tr>
 				
@@ -69,7 +69,7 @@
 					
 					<tr>
 						<td><b>Primary Contact Number :</b></td>
-						<td><b>${UsersModelDetail.mobilenumber}</b></td>
+						<td><b>${UsersModelDetail.userModel.mobilenumber}</b></td>
 					</tr>
 			
 					<tr>

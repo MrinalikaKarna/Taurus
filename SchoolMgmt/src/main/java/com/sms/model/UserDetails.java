@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -38,12 +39,7 @@ public class UserDetails {
  	@Column(name = "address")
  	private String address;
     
-    @NotEmpty
-	@Column(name = "mobilenumber")
-//    @GeneratedValue(generator = "newgenerator")
-//    @GenericGenerator(name="newgenerator",strategy="foreign",parameters={@Parameter(value="usersModel", name="property")} )
-	private long mobilenumber;
-    
+
     @NotEmpty
   	@Column(name = "gender")
     private String gender;
@@ -55,6 +51,11 @@ public class UserDetails {
     @ManyToOne
     @JoinColumn(name="classid")
   	private ClassDetails classDetails;
+    
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="mobilenumber")
+    private UsersModel userModel;
   	
     
     @NotEmpty
@@ -138,18 +139,18 @@ public class UserDetails {
 		this.altmobilenumber = altmobilenumber;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mobilenumber",referencedColumnName="mobilenumber", insertable=false, updatable=false)
-    private UsersModel usersModel;
-    
-
-	public UsersModel getUsersModel() {
-		return usersModel;
-	}
-
-	public void setUsersModel(UsersModel usersModel) {
-		this.usersModel = usersModel;
-	}
+//	@OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "mobilenumber",referencedColumnName="mobilenumber", insertable=false, updatable=false)
+//    private UsersModel usersModel;
+//    
+//
+//	public UsersModel getUsersModel() {
+//		return usersModel;
+//	}
+//
+//	public void setUsersModel(UsersModel usersModel) {
+//		this.usersModel = usersModel;
+//	}
 
 	public int getUserid() {
 		return userid;
@@ -183,13 +184,13 @@ public class UserDetails {
 		this.address = address;
 	}
 
-	public long getMobilenumber() {
-		return mobilenumber;
-	}
-
-	public void setMobilenumber(long mobilenumber) {
-		this.mobilenumber = mobilenumber;
-	}
+//	public long getMobilenumber() {
+//		return mobilenumber;
+//	}
+//
+//	public void setMobilenumber(long mobilenumber) {
+//		this.mobilenumber = mobilenumber;
+//	}
 
 	public ClassDetails getClassDetails() {
 		return classDetails;
@@ -197,6 +198,15 @@ public class UserDetails {
 
 	public void setClassDetails(ClassDetails classDetails) {
 		this.classDetails = classDetails;
+	}
+
+	public UsersModel getUserModel() {
+		return userModel;
+	}
+
+	public void setUserModel(UsersModel userModel) {
+		this.userModel = userModel;
+//		userModel.setUserDetails(this);
 	}
 
 	

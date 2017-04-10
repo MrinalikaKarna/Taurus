@@ -107,7 +107,7 @@ public class UsersDaoImpl implements UsersDao {
 	public UserDetails getUserDetails(long mobilenumber) {
 		Session session1 = session.openSession();
 		Transaction tx = session1.beginTransaction();
-		String hql = "from com.sms.model.UserDetails as u where u.mobilenumber=?";
+		String hql = "from com.sms.model.UserDetails as u where u.userModel.mobilenumber=?";
 		try {
 			Query query = session1.createQuery(hql);
 			query.setParameter(0, mobilenumber);
@@ -179,6 +179,7 @@ public class UsersDaoImpl implements UsersDao {
 		Session session1 = session.openSession();
 		Transaction tx = session1.beginTransaction();
 		try {
+			
 			session1.save(userDetails);
 			tx.commit();
 			session1.close();

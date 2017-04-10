@@ -1,8 +1,11 @@
 package com.sms.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -19,10 +22,9 @@ public class UsersModel {
 	@Column(name = "password")
 	private String password;
     
-    @NotEmpty
-	@Column(name = "role")
-	private String role;
-
+//    @OneToOne
+//    @JoinColumn(name="mobilenumber")
+//    private UserDetails userDetails;
     
 
 	public long getMobilenumber() {
@@ -41,14 +43,14 @@ public class UsersModel {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
-	}
+//	public UserDetails getUserDetails() {
+//		return userDetails;
+//	}
+//
+//	public void setUserDetails(UserDetails userDetails) {
+//		this.userDetails = userDetails;
+//	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
     
-
 
 }

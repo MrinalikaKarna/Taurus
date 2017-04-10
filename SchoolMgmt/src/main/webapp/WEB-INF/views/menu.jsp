@@ -38,7 +38,7 @@
 				<div class="list-group">
 				    <a href="<%=request.getContextPath() %>/users/Hello?method=GET" class="list-group-item" id="menu1" >
 				    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> News n' Events </a>
-					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UserDetails.mobilenumber}" class="list-group-item" id="menu2">
+					<a href="<%=request.getContextPath() %>/users/myprofile?method=GET&param1=${UserDetails.userModel.mobilenumber}" class="list-group-item" id="menu2">
 					 <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> My Profile </a>
 					 <a href="<%=request.getContextPath() %>/users/reportcard?method=GET&param2=${UserDetails.userid}" class="list-group-item" id="menu3">
 						<span class="glyphicon glyphicon-education" aria-hidden="true"></span> Report Card</a> 
