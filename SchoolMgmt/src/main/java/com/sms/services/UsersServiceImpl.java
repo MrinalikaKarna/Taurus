@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
 import com.sms.model.ClassDetails;
+import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
+import com.sms.model.VisualArtStore;
+import com.sms.model.YearDetails;
 
 @Service("usersServices")
 public class UsersServiceImpl implements UsersServices {
@@ -60,6 +63,27 @@ public class UsersServiceImpl implements UsersServices {
 
 	public boolean saveUserUpdateDetails(UserDetails userDetails) {
 		return usersDao.saveUserUpdateDetails(userDetails);
+	}
+
+	public List<YearDetails> getYearDetailsList() {
+		return usersDao.getYearDetailsList();
+	}
+
+	public List<ExamDetails> getExamDetailsList() {
+		return usersDao.getExamDetailsList();
+	}
+
+	public boolean save(VisualArtStore uploadFile) {
+		return usersDao.save(uploadFile);
+		
+	}
+
+	public List<VisualArtStore> getVisualArtStoreList() {
+		return usersDao.getVisualArtStoreList();
+	}
+
+	public List<byte[]> getAllImages() {
+		return usersDao.getAllImages();
 	}
 
 }

@@ -35,11 +35,22 @@
   <put-attribute name="body" value="/WEB-INF/views/adduserdetails.jsp" />
  </definition>
  
- <definition name="login" extends="baseLayout">
+ <definition name="uploadmarks" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/uploadmarks.jsp" />
+ </definition>
+ 
+ <definition name="login" extends="baseLayout2">
   <put-attribute name="header" value="" />
-  <put-attribute name="menu" value="" />
   <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
   <put-attribute name="footer" value="" />
+ </definition>
+ 
+ <definition name="creativecorner" extends="baseLayout2">
+  <put-attribute name="body" value="/WEB-INF/views/creativecorner.jsp" />
+ </definition>
+ 
+ <definition name="visualart" extends="baseLayout2">
+  <put-attribute name="body" value="/WEB-INF/views/visualart.jsp" />
  </definition>
  
  </tiles-definitions> 

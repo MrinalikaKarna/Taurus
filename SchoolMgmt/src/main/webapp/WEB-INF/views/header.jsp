@@ -33,9 +33,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">My Site</a></li>
+            <li class="active"><a href="<%=request.getContextPath() %>/users/Hello?method=GET">My Site</a></li>
             <li><a href="#about">Image Gallery</a></li>
-            <li><a href="#about">Creative Corner</a></li>
+            <li><a href="<%=request.getContextPath() %>/users/creativecorner?method=GET&param1=${UserDetails.userid}">Creative Corner</a></li>
             <li><a href="#about">Forums</a></li>
             
           </ul>

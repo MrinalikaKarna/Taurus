@@ -2,8 +2,10 @@ package com.sms.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sms.model.ClassDetails;
+import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
+import com.sms.model.MarksDetails;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
+import com.sms.model.VisualArtStore;
+import com.sms.model.YearDetails;
 import com.sms.services.UsersServiceImpl;
 import com.sms.services.UsersServices;
 
@@ -69,11 +76,37 @@ public class Users {
 	@RequestMapping(value="/Hello", method=RequestMethod.GET)
 	public String showWelcome(ModelMap model){
 		model.put("Hello", new UsersModel());
-		return "Hello";
+		return "Hello";	
+	}
+	
+	
+	@RequestMapping(value="creativecorner/visualart", method=RequestMethod.GET)
+	public String showVisualArt(ModelMap model){
+		List<VisualArtStore> visualArtStore = usersServices.getVisualArtStoreList();
+		model.put("VisualData", visualArtStore);
+		for(int i=0;i<1;i++){
+	         byte[] binaryData = visualArtStore.get(i).getFiledata();
+	         if(binaryData != null){
+	         try {
+	                byte[] encodeBase64 = Base64.encodeBase64(binaryData);
+	                String base64Encoded = new String(encodeBase64, "UTF-8");
+	                model.put("ImageList", base64Encoded);
+
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	         }}
+		return "visualart";
+	}
+	
+	
+	@RequestMapping(value="/creativecorner", method=RequestMethod.GET)
+	public String showCreativeCorner(ModelMap model){
+		
+		return "creativecorner";
 		
 		
 	}
-	
 	
 	@RequestMapping(value="/myprofile",method=RequestMethod.GET)
 	public String showMyProfile(ModelMap model, @RequestParam("param1") long mnumber)
@@ -119,6 +152,22 @@ public class Users {
 	    model.addAttribute("ClassDetails", classDetails);
 		model.addAttribute("AddUserData", new UserDetails());
 		return "adduserdetails";
+         }
+	
+	@RequestMapping(value="/uploadmarks",method=RequestMethod.GET)
+	public String uploadMarksDetails(ModelMap model)
+	{   
+		List<ClassDetails> classDetails1 = usersServices.getClassDetailsList();
+	    model.addAttribute("ClassDetails", classDetails1);
+	    
+	    List<YearDetails> yearDetails = usersServices.getYearDetailsList();
+	    model.addAttribute("YearDetails", yearDetails);
+	    
+	    List<ExamDetails> examDetails = usersServices.getExamDetailsList();
+	    model.addAttribute("ExamDetails", examDetails);
+	    
+		model.addAttribute("MarksDetails", new MarksDetails());
+		return "uploadmarks";
          }
 	
 	
@@ -228,12 +277,38 @@ public class Users {
 	
 	}
 	
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String showLogout(ModelMap model, HttpSession newsession){
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String showLogout(ModelMap model, HttpSession newsession) {
 		newsession.removeAttribute("UsersModel");
 		return "redirect:/";
 	}
-		
-	}
+
+	
+
+    @RequestMapping(value = "creativecorner/visualart/doUpload", method = RequestMethod.POST)
+    public String handleFileUpload(@RequestParam int userid, @RequestParam CommonsMultipartFile[] fileUpload) throws Exception {
+      
+      if (fileUpload != null && fileUpload.length > 0) {
+        for (CommonsMultipartFile aFile : fileUpload){
+             
+            VisualArtStore uploadFile = new VisualArtStore();
+            UserDetails userDetails = new UserDetails();
+            userDetails.setUserid(userid);
+            uploadFile.setUserDetails(userDetails);
+            uploadFile.setFilename(aFile.getOriginalFilename());
+            uploadFile.setFiledata(aFile.getBytes());
+            boolean fileUploadStatus = usersServices.save(uploadFile);
+            if (fileUploadStatus==true){
+    			
+    			return "visualart";
+    		}else{
+    			
+    			return "visualart";			
+    		}}}
+        return "visualart";
+    }
+
+}   
+
 
 

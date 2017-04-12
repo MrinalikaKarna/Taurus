@@ -17,10 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 import com.sms.model.ClassDetails;
+import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
+import com.sms.model.VisualArtStore;
+import com.sms.model.YearDetails;
 
 @Repository
 @Transactional
@@ -190,6 +193,102 @@ public class UsersDaoImpl implements UsersDao {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<YearDetails> getYearDetailsList() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.YearDetails";
+		Query query = session1.createQuery(hql);
+		List<YearDetails> yearDetails = (List<YearDetails>) query.list();
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return yearDetails;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ExamDetails> getExamDetailsList() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.ExamDetails";
+		Query query = session1.createQuery(hql);
+		List<ExamDetails> examDetails = (List<ExamDetails>) query.list();
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return examDetails;
+	}
+
+	@Transactional
+	public boolean save(VisualArtStore uploadFile) {
+		
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		try {
+			session1.save(uploadFile);
+			tx.commit();
+			session1.close();
+			return true;
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+			return false;
+		}
+	    
+	
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<VisualArtStore> getVisualArtStoreList() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.VisualArtStore";
+		Query query = session1.createQuery(hql);
+		List<VisualArtStore> visualArtStoreData = (List<VisualArtStore>) query.list();
+		List<VisualArtStore> visualArtStoreDatas = Lists.reverse(visualArtStoreData);
+
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return visualArtStoreDatas;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<byte[]> getAllImages() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "filedata from com.sms.model.VisualArtStore";
+		Query query = session1.createQuery(hql);
+		List<byte[]> imageData = (List<byte[]>) query.list();
+		List<byte[]> imageDatas = Lists.reverse(imageData);
+
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return imageDatas;
 	}
 
 }
