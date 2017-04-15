@@ -2,9 +2,11 @@ package com.sms.services;
 
 import java.util.List;
 
+import com.sms.model.BlogPostStore;
 import com.sms.model.ClassDetails;
 import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
+import com.sms.model.MarksDetails;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
@@ -18,6 +20,8 @@ public interface UsersServices {
 	public List<YearDetails> getYearDetailsList();
 	public List<ExamDetails> getExamDetailsList();
 	public List<VisualArtStore> getVisualArtStoreList();
+	public List<BlogPostStore> getBlogPostStoreList();
+	public List<UserDetails> getUserClassDetails(int classid);
 	public List<byte[]> getAllImages();
 	public boolean delete(UsersModel usersModel);
 	public boolean SaveorUpdate(UsersModel usersModel);
@@ -27,4 +31,6 @@ public interface UsersServices {
 	public boolean saveNewsEvent(NewsEvent newsEvent);
 	public boolean saveUserUpdateDetails(UserDetails userDetails);
 	public boolean save(VisualArtStore uploadFile);
+	public boolean save(BlogPostStore blogpostFile);
+	public boolean saveUserMarksUpdateDetails(MarksDetails marksDetails);
 }

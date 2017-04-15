@@ -18,7 +18,7 @@
                 <p>
                     Visit for all blogposts submitted...                        
                 </p>
-                <a href="#" class="btn btn-success lower">Visit</a>
+                <a href="<%=request.getContextPath() %>/users/creativecorner/blogpost?method=GET" class="btn btn-success lower">Visit</a>
             </div>
         </div>
 

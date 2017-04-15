@@ -1,14 +1,21 @@
 package com.sms.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="marksdetails")
 public class MarksDetails {
 	
 	@Id
 	@Column(name = "marksid")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int marksid;
 	
 	@ManyToOne
@@ -20,8 +27,12 @@ public class MarksDetails {
 	private ExamDetails examDetails;
 	
 	@ManyToOne
-    @JoinColumn(name="yearclassid")
-	private YearClassDetails yearClassDetails;
+    @JoinColumn(name="yearid")
+	private YearDetails yearDetails;
+	
+	@ManyToOne
+    @JoinColumn(name="classid")
+	private ClassDetails classDetails;
 	
 	@Column(name = "english")
 	private int english;
@@ -65,12 +76,21 @@ public class MarksDetails {
 		this.examDetails = examDetails;
 	}
 
-	public YearClassDetails getYearClassDetails() {
-		return yearClassDetails;
+
+	public YearDetails getYearDetails() {
+		return yearDetails;
 	}
 
-	public void setYearClassDetails(YearClassDetails yearClassDetails) {
-		this.yearClassDetails = yearClassDetails;
+	public void setYearDetails(YearDetails yearDetails) {
+		this.yearDetails = yearDetails;
+	}
+
+	public ClassDetails getClassDetails() {
+		return classDetails;
+	}
+
+	public void setClassDetails(ClassDetails classDetails) {
+		this.classDetails = classDetails;
 	}
 
 	public int getEnglish() {

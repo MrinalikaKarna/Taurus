@@ -16,9 +16,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
+import com.sms.model.BlogPostStore;
 import com.sms.model.ClassDetails;
 import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
+import com.sms.model.MarksDetails;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
@@ -289,6 +291,77 @@ public class UsersDaoImpl implements UsersDao {
 			e.printStackTrace();
 		}
 		return imageDatas;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<BlogPostStore> getBlogPostStoreList() {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.BlogPostStore";
+		Query query = session1.createQuery(hql);
+		List<BlogPostStore> blogPostStoreData = (List<BlogPostStore>) query.list();
+		List<BlogPostStore> blogPostStoreDatas = Lists.reverse(blogPostStoreData);
+
+		try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return blogPostStoreDatas;
+	}
+
+	public boolean save(BlogPostStore blogpostFile) {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		try {
+			session1.save(blogpostFile);
+			tx.commit();
+			session1.close();
+			return true;
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<UserDetails> getUserClassDetails(int classid) {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		String hql = "from com.sms.model.UserDetails as u where u.classDetails.classid=?";
+         Query query = session1.createQuery(hql);
+			query.setParameter(0, classid);
+			List<UserDetails> userClassDetails = (List<UserDetails>) query.list();
+	    try {
+			tx.commit();
+			session1.close();
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+		}
+		return userClassDetails;
+	}
+
+	public boolean saveUserMarksUpdateDetails(MarksDetails marksDetails) {
+		Session session1 = session.openSession();
+		Transaction tx = session1.beginTransaction();
+		try {
+			session1.save(marksDetails);
+			tx.commit();
+			session1.close();
+			return true;
+		} catch (Exception e) {
+			tx.rollback();
+			session1.close();
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

@@ -39,6 +39,10 @@
   <put-attribute name="body" value="/WEB-INF/views/uploadmarks.jsp" />
  </definition>
  
+ <definition name="marksdetails" extends="baseLayout">
+  <put-attribute name="body" value="/WEB-INF/views/marksdetails.jsp" />
+ </definition>
+ 
  <definition name="login" extends="baseLayout2">
   <put-attribute name="header" value="" />
   <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
@@ -51,6 +55,10 @@
  
  <definition name="visualart" extends="baseLayout2">
   <put-attribute name="body" value="/WEB-INF/views/visualart.jsp" />
+ </definition>
+ 
+ <definition name="blogpost" extends="baseLayout2">
+  <put-attribute name="body" value="/WEB-INF/views/blogpost.jsp" />
  </definition>
  
  </tiles-definitions> 

@@ -1,5 +1,6 @@
 package com.sms.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sms.model.BlogPostStore;
 import com.sms.model.ClassDetails;
 import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
@@ -79,24 +81,86 @@ public class Users {
 		return "Hello";	
 	}
 	
+	@RequestMapping(value="/marksdetails", method=RequestMethod.GET)
+	public String showStudentDetails(ModelMap model){
+		model.addAttribute("MarksDetails", new MarksDetails());
+		return "marksdetails";	
+	}
+	
+	@RequestMapping(value="/getStudentDetails",method=RequestMethod.POST)
+	public String getStudentDetails(ModelMap model, @ModelAttribute("ClassDetailsnew") ClassDetails classdetails)
+	{   
+		int classid = classdetails.getClassid();
+		List<UserDetails> studentMarksDetails = usersServices.getUserClassDetails(classid);
+        model.addAttribute("StudentDetails", studentMarksDetails);
+ 
+	    List<YearDetails> yearDetails = usersServices.getYearDetailsList();
+	    model.addAttribute("YearDetails", yearDetails);
+	    
+	    List<ExamDetails> examDetails = usersServices.getExamDetailsList();
+	    model.addAttribute("ExamDetails", examDetails);
+	    
+	    model.addAttribute("MarksDetailsNew", new MarksDetails());
+        
+	    return "marksdetails";
+			
+		}
+       
+	
 	
 	@RequestMapping(value="creativecorner/visualart", method=RequestMethod.GET)
 	public String showVisualArt(ModelMap model){
 		List<VisualArtStore> visualArtStore = usersServices.getVisualArtStoreList();
 		model.put("VisualData", visualArtStore);
-		for(int i=0;i<1;i++){
+		int count = visualArtStore.size();
+		List<String> imageList = new ArrayList<String>();
+		for(int i=0;i<count;i++){
 	         byte[] binaryData = visualArtStore.get(i).getFiledata();
 	         if(binaryData != null){
 	         try {
 	                byte[] encodeBase64 = Base64.encodeBase64(binaryData);
 	                String base64Encoded = new String(encodeBase64, "UTF-8");
-	                model.put("ImageList", base64Encoded);
+//	                model.addAttribute("ImageList", base64Encoded);
+	                imageList.add(base64Encoded);
 
 	            } catch (Exception e) {
 	                e.printStackTrace();
 	            }
 	         }}
+		 model.addAttribute("ImageList", imageList);
 		return "visualart";
+	}
+	
+	
+	@RequestMapping(value="creativecorner/blogpost", method=RequestMethod.GET)
+	public String showBlogpost(ModelMap model){
+		model.addAttribute("BlogDetails", new BlogPostStore());
+		List<BlogPostStore> blogPostStore = (List<BlogPostStore>) usersServices.getBlogPostStoreList();
+		
+		model.addAttribute("BlogPostDetail",blogPostStore);
+		return "blogpost";
+	}
+	
+	@RequestMapping(value="/leaves", method=RequestMethod.POST)
+	public String applyLeaves(ModelMap model, @ModelAttribute("userLeaveData") Leaves leaves)
+	{
+    if(leaves.getFromdate()!=null && leaves.getReason()!=null && !leaves.getReason().isEmpty())
+	{   
+		leaves.setStatus("Pending");
+		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
+		if (leaveUpdateStatus==true){
+			model.addAttribute("Status", true);
+			return "leaves";
+		}else{
+			model.addAttribute("Status", false);
+			return "leaves";
+			
+		}
+	}else if(leaves.getFromdate()== null && leaves.getTodate()== null && leaves.getReason().isEmpty()){
+		return "leaves";
+	}
+	return "leaves";
+	
 	}
 	
 	
@@ -159,14 +223,9 @@ public class Users {
 	{   
 		List<ClassDetails> classDetails1 = usersServices.getClassDetailsList();
 	    model.addAttribute("ClassDetails", classDetails1);
+
 	    
-	    List<YearDetails> yearDetails = usersServices.getYearDetailsList();
-	    model.addAttribute("YearDetails", yearDetails);
-	    
-	    List<ExamDetails> examDetails = usersServices.getExamDetailsList();
-	    model.addAttribute("ExamDetails", examDetails);
-	    
-		model.addAttribute("MarksDetails", new MarksDetails());
+		model.addAttribute("ClassDetailsnew", new ClassDetails());
 		return "uploadmarks";
          }
 	
@@ -174,9 +233,7 @@ public class Users {
 	@RequestMapping(value="/adduserdetails",method=RequestMethod.POST)
 	public String addUserDetailsPost(ModelMap model, @ModelAttribute("AddUserData") UserDetails userDetails)
 	{   
-//		UsersModel usersModel1 = new UsersModel();
-//		usersModel1.setPassword("abc123");
-//		userDetails.setUserModel(usersModel1);
+
 		boolean userUpdateStatus = usersServices.saveUserUpdateDetails(userDetails);
 		if (userUpdateStatus==true){
 			model.addAttribute("UserUpdateStatus", true);
@@ -189,6 +246,23 @@ public class Users {
          }
 	
 	
+	@RequestMapping(value="/addmarksdetails",method=RequestMethod.POST)
+	public String addMarksDetails(ModelMap model, @ModelAttribute("MarksDetailsNew") MarksDetails marksDetails)
+	{   
+
+		boolean marksUpdateStatus = usersServices.saveUserMarksUpdateDetails(marksDetails);
+		if (marksUpdateStatus==true){
+			model.addAttribute("MarksUpdateStatus", true);
+			return "marksdetails";
+		}else{
+			model.addAttribute("UserUpdateStatus", false);
+			return "marksdetails";
+			
+		}
+      }
+	
+	
+	
 	@RequestMapping(value="/leaves",method=RequestMethod.GET)
 	public String showLeaves(ModelMap model, @RequestParam("param3") int userid)
 	{   
@@ -198,26 +272,23 @@ public class Users {
          }
 	
 	
-	@RequestMapping(value="/leaves", method=RequestMethod.POST)
-	public String applyLeaves(ModelMap model, @ModelAttribute("userLeaveData") Leaves leaves)
+	@RequestMapping(value="creativecorner/visualart/doSubmitBlogpost", method=RequestMethod.POST)
+	public String submitBlogPost(ModelMap model, @ModelAttribute("BlogDetails") BlogPostStore blogpostFile)
 	{
-    if(leaves.getFromdate()!=null && leaves.getReason()!=null && !leaves.getReason().isEmpty())
+    if(!blogpostFile.getBlogtitle().isEmpty() && !blogpostFile.getBlogbody().isEmpty())
 	{   
-		leaves.setStatus("Pending");
-		boolean leaveUpdateStatus = usersServices.saveUserLeaves(leaves);
-		if (leaveUpdateStatus==true){
+		boolean blogpostUpdateStatus = usersServices.save(blogpostFile);
+		if (blogpostUpdateStatus==true){
 			model.addAttribute("Status", true);
-			return "leaves";
+			return "blogpost";
 		}else{
 			model.addAttribute("Status", false);
-			return "leaves";
+			return "blogpost";
 			
 		}
-	}else if(leaves.getFromdate()== null && leaves.getTodate()== null && leaves.getReason().isEmpty()){
-		return "leaves";
+	}else {
+		return "blogpost";
 	}
-	return "leaves";
-	
 	}
 	
 	@RequestMapping(value="submitNewsData", method=RequestMethod.POST)
@@ -307,6 +378,12 @@ public class Users {
     		}}}
         return "visualart";
     }
+    
+    
+ 
+    
+    
+
 
 }   
 

@@ -17,41 +17,18 @@
 </head>
 <body>
    <div class="form-group">
-		<s:form commandName="MarksDetails" action="getStudentDetails"
+		<s:form  action="getStudentDetails" commandName="ClassDetailsnew"
 				method="post">
 					<div class="input-group">
 					    <label>Class </label>
-						<s:select path="yearClassDetails.classDetails.classid" name="InputClassDetails" id="InputClassDetails"
-							type="text" >
+						<s:select path="classid"  name="InputClassDetails" id="InputClassDetails">
 							<c:forEach var="classd" items="${ClassDetails}">
 								<s:option value="${classd.classid}" label="${classd.classname}" />
 							</c:forEach>
 
 						</s:select>
 					</div>
-					
-<!-- 					<div class="input-group"> -->
-<!-- 					    <label>Year </label> -->
-<%-- 						<s:select path="yearClassDetails.yearDetails.yearid" name="InputYearDetails" id="InputYearDetails" --%>
-<%-- 							type="text" > --%>
-<%-- 							<c:forEach var="yeard" items="${YearDetails}"> --%>
-<%-- 								<s:option value="${yeard.yearid}" label="${yeard.yearid}" /> --%>
-<%-- 							</c:forEach> --%>
-
-<%-- 						</s:select> --%>
-<!-- 					</div> -->
-					
-<!-- 					<div class="input-group"> -->
-<!-- 					    <label>Exam </label> -->
-<%-- 						<s:select path="examDetails.examid" name="InputExamDetails" id="InputExamDetails" --%>
-<%-- 							type="text" > --%>
-<%-- 							<c:forEach var="examd" items="${ExamDetails}"> --%>
-<%-- 								<s:option value="${examd.examid}" label="${examd.examname}" /> --%>
-<%-- 							</c:forEach> --%>
-
-<%-- 						</s:select> --%>
-<!-- 					</div> -->
-				
+	
 				<input type="submit" name="submit" id="submit" value="Get Student Details"
 									class="btn btn-info pull-right"/>
 			</s:form>

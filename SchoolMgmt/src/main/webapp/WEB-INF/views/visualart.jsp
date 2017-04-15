@@ -34,62 +34,28 @@
     </div>
 
           
+        </div></div>
+        <div id="imagebody">
+
+            
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src= "data:image/jpeg;base64,${ImageList}" width="200" height="150" />
-                    <h5>${VisualData[0].userDetails.firstname}</h5>
-<!--                     <h5>6 A</h5> -->
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h8.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h4.jpg" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h7.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h3.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h6.jpg" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h1.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h2.jpg" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <img class="thumbnail img-responsive" alt="Bootstrap template" src="http://www.prepbootstrap.com/Content/images/shared/houses/h5.jpg" />
-                </div>
-            </div>
-        </div>
+
     </div>
-</div>
+    
+     <div class="modal fade alert" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"> 
+      <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <h4 class="modal-title" id="myLargeModalLabel-1"></h4>
+                    </div>
+                    <div class="modal-body active">
+                        <img src="" class="imagepreview img-responsive img-rounded center-block" alt="" />
+                    </div>
+                </div>
+        </div>
+    </div> 
+
 
 <div class="modal fade alert" id="visualArtUploadModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -113,7 +79,7 @@
                 </tr>
                  
                 <tr>
-                <td> ${UserDetails.userid}
+                <td> 
                 <input name="userid" type="hidden" value='${UserDetails.userid}'/></td>
                 </tr>
                 <tr>
@@ -127,11 +93,32 @@
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
+$(function() {
+	
+    <c:forEach items="${ImageList}" var="myImage" varStatus="i" >
+   
+    newdiv = '<div class="col-md-2">' + '<div class="well">' + '<a href="#" class="showme">' + '<img class="thumbnail img-responsive" alt="Bootstrap template" src= "data:image/jpeg;base64,${myImage}" width="200" height="150" />'
+    + '</a>'+ '<h5 id="myheader">' + '${VisualData[i.index].userDetails.firstname} ${VisualData[i.index].userDetails.lastname}' + '</h5>' + '<h5>' + '${VisualData[i.index].userDetails.classDetails.classname}' 
+    + '</h5>' + '</div>' + '</div>' 
 
+	$("#imagebody").append(newdiv);
+    
 
-		
-		
+    </c:forEach>
+    
+    $('a.showme').on('click', function(){
+    	var mytext=$(this).find('h5.myheader').text();
+    	$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+    	$('.modal-title').html($("#myheader").html());
+        $('#imgModal').modal('show');
+      
+    })
+    
+    
+   
+    
+})
 </script>
 </body>
 </html>

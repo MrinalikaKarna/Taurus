@@ -2,9 +2,11 @@ package com.sms.dao;
 
 import java.util.List;
 
+import com.sms.model.BlogPostStore;
 import com.sms.model.ClassDetails;
 import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
+import com.sms.model.MarksDetails;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
@@ -19,7 +21,9 @@ public interface UsersDao {
 	public List<ExamDetails> getExamDetailsList();
 	public List<NewsEvent> getNewsEventList();
 	public List<VisualArtStore> getVisualArtStoreList();
+	public List<BlogPostStore> getBlogPostStoreList();
 	public List<byte[]> getAllImages();
+	public List<UserDetails> getUserClassDetails(int classid);
 	public boolean delete(UsersModel usersModel);
 	public boolean SaveorUpdate(UsersModel usersModel);
 	public UsersModel doLogin(UsersModel usersModel);
@@ -28,6 +32,8 @@ public interface UsersDao {
 	public boolean saveNewsEvent(NewsEvent newsEvent);
 	public boolean saveUserUpdateDetails(UserDetails userDetails);
 	public boolean save(VisualArtStore uploadFile);
+	public boolean save(BlogPostStore blogpostFile);
+	public boolean saveUserMarksUpdateDetails(MarksDetails marksDetails);
 	
 	
 

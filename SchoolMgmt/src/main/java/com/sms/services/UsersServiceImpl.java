@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.dao.UsersDao;
+import com.sms.model.BlogPostStore;
 import com.sms.model.ClassDetails;
 import com.sms.model.ExamDetails;
 import com.sms.model.Leaves;
+import com.sms.model.MarksDetails;
 import com.sms.model.NewsEvent;
 import com.sms.model.UserDetails;
 import com.sms.model.UsersModel;
@@ -84,6 +86,22 @@ public class UsersServiceImpl implements UsersServices {
 
 	public List<byte[]> getAllImages() {
 		return usersDao.getAllImages();
+	}
+
+	public List<BlogPostStore> getBlogPostStoreList() {
+		return usersDao.getBlogPostStoreList();
+	}
+
+	public boolean save(BlogPostStore blogpostFile) {
+		return usersDao.save(blogpostFile);
+	}
+
+	public List<UserDetails> getUserClassDetails(int classid) {
+		return usersDao.getUserClassDetails(classid);
+	}
+
+	public boolean saveUserMarksUpdateDetails(MarksDetails marksDetails) {
+		return usersDao.saveUserMarksUpdateDetails(marksDetails);
 	}
 
 }
