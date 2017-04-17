@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 @Table(name="marksdetails")
 public class MarksDetails {
@@ -64,6 +66,8 @@ public class MarksDetails {
 		return userDetails;
 	}
 
+	
+	@JsonManagedReference
 	public void setUserDetails(UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
@@ -71,7 +75,8 @@ public class MarksDetails {
 	public ExamDetails getExamDetails() {
 		return examDetails;
 	}
-
+    
+	@JsonManagedReference
 	public void setExamDetails(ExamDetails examDetails) {
 		this.examDetails = examDetails;
 	}
@@ -80,7 +85,8 @@ public class MarksDetails {
 	public YearDetails getYearDetails() {
 		return yearDetails;
 	}
-
+    
+	@JsonManagedReference
 	public void setYearDetails(YearDetails yearDetails) {
 		this.yearDetails = yearDetails;
 	}
@@ -88,7 +94,8 @@ public class MarksDetails {
 	public ClassDetails getClassDetails() {
 		return classDetails;
 	}
-
+    
+	@JsonManagedReference
 	public void setClassDetails(ClassDetails classDetails) {
 		this.classDetails = classDetails;
 	}

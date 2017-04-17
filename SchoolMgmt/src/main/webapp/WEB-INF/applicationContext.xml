@@ -65,6 +65,7 @@
 				  <value>com.sms.model.YearDetails</value>
 				  <value>com.sms.model.YearClassDetails</value>
 				  <value>com.sms.model.NewsEvent</value>
+				  <value>com.sms.model.MarksDetails</value>
 			</list>
 			</property>
 

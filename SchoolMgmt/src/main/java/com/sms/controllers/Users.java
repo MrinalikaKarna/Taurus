@@ -1,7 +1,9 @@
 package com.sms.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,7 +103,7 @@ public class Users {
 	    List<ExamDetails> examDetails = usersServices.getExamDetailsList();
 	    model.addAttribute("ExamDetails", examDetails);
 	    
-	    model.addAttribute("MarksDetailsNew", new MarksDetails());
+//	    model.addAttribute("MarksDetailsNew", new MarksDetails());
         
 	    return "marksdetails";
 			
@@ -247,18 +250,20 @@ public class Users {
 	
 	
 	@RequestMapping(value="/addmarksdetails",method=RequestMethod.POST)
-	public String addMarksDetails(ModelMap model, @ModelAttribute("MarksDetailsNew") MarksDetails marksDetails)
+	public @ResponseBody Map<String,Object> addMarksDetails(@RequestBody MarksDetails marksDetails)
 	{   
-
+		Map<String,Object> map = new HashMap<String,Object>();
 		boolean marksUpdateStatus = usersServices.saveUserMarksUpdateDetails(marksDetails);
 		if (marksUpdateStatus==true){
-			model.addAttribute("MarksUpdateStatus", true);
-			return "marksdetails";
+			map.put("MarksUpdateStatus", true);
+			map.put("message", "Saved successfully");
+//			return "marksdetails";
 		}else{
-			model.addAttribute("UserUpdateStatus", false);
-			return "marksdetails";
-			
+			map.put("MarksUpdateStatus", true);
+			map.put("message", "Not Saved successfully");
+//			return "marksdetails";	
 		}
+		return map;
       }
 	
 	
